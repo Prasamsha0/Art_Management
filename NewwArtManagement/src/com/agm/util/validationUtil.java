@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.amg.util;
+package com.agm.util;
 
 import java.util.regex.Pattern;
 
@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * @author Dell
  */
 public class validationUtil {
-        /**
+            /**
      * the following code is used for validating the things entered by the admin
      */
    
@@ -65,5 +65,5 @@ public class validationUtil {
 // validation to check whether size is in height X width form and not empty
     public static boolean ValidSize(String size) {
         return !isNullOrEmpty(size) && SIZE_PATTERN.matcher(size).matches();
-    }    
+    }
 }

@@ -4,7 +4,7 @@
  */
 package com.agm.view;
 import com.agm.model.paintingInfo;
-import com.amg.util.validationUtil;
+import com.agm.util.validationUtil;
 import java.awt.Color;
 import java.util.LinkedList;
 import java.util.List;
