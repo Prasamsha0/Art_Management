@@ -13,65 +13,36 @@ import java.util.List;
  * @author Dell
  */
 public class mergeSort {
-
-    /**
-     * Recursive merge sort method.
-     *
-     * @param artItemList the list to be sorted
-     * @return the sorted list
-     */
-    public List<paintingInfo> sort(List<paintingInfo> artItemList) {
-        if (artItemList.size() <= 1) {
-            return artItemList; // Base case: already sorted
+    public List<paintingInfo> mergeSortByPrice(List<paintingInfo> list, boolean isDesc) {
+        if (list.size() <= 1) {
+            return list;
         }
 
-        // Split the list into two halves
-        int mid = artItemList.size() / 2;
-        List<paintingInfo> left = new ArrayList<>(artItemList.subList(0, mid));
-        List<paintingInfo> right = new ArrayList<>(artItemList.subList(mid, artItemList.size()));
+        int mid = list.size() / 2;
+        List<paintingInfo> left = mergeSortByPrice(list.subList(0, mid), isDesc);
+        List<paintingInfo> right = mergeSortByPrice(list.subList(mid, list.size()), isDesc);
 
-        // Recursively sort both halves
-        left = sort(left);
-        right = sort(right);
-
-        // Merge the sorted halves
-        return merge(left, right);
+        return merge(left, right, isDesc);
     }
 
-    /**
-     * Merges two sorted lists into one sorted list.
-     *
-     * @param left the left sorted list
-     * @param right the right sorted list
-     * @return the merged sorted list
-     */
-    private List<paintingInfo> merge(List<paintingInfo> left, List<paintingInfo> right) {
-        List<paintingInfo> merged = new ArrayList<>();
+    private List<paintingInfo> merge(List<paintingInfo> left, List<paintingInfo> right, boolean isDesc) {
+        List<paintingInfo> result = new ArrayList<>();
         int i = 0, j = 0;
 
-        // Merge elements from both lists in sorted order
         while (i < left.size() && j < right.size()) {
-            if (left.get(i).getPrice() <= right.get(j).getPrice()) {
-                merged.add(left.get(i));
-                i++;
+            if (isDesc
+                    ? left.get(i).getPrice() > right.get(j).getPrice()
+                    : left.get(i).getPrice() < right.get(j).getPrice()) {
+                result.add(left.get(i++));
             } else {
-                merged.add(right.get(j));
-                j++;
+                result.add(right.get(j++));
             }
         }
 
-        // Add any remaining elements from the left list
-        while (i < left.size()) {
-            merged.add(left.get(i));
-            i++;
-        }
+        result.addAll(left.subList(i, left.size()));
+        result.addAll(right.subList(j, right.size()));
 
-        // Add any remaining elements from the right list
-        while (j < right.size()) {
-            merged.add(right.get(j));
-            j++;
-        }
-
-        return merged;
+        return result;
     }
 }
+

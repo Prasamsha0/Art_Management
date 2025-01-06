@@ -20,27 +20,22 @@ public class sort {
         artItemList = new ArrayList<>();
     }
     
-    /**
-     * Sorts a list of paintingInfo objects by their LMU ID in ascending or
-     * descending order.
-     *
-     * @param itemsList the list of paintingInfo objects to be sorted
-     * @param isDesc specifies the sort order (true for descending, false for
-     * ascending)
-     * @return the sorted list
-     */
+    public List<paintingInfo> sortById(List<paintingInfo> itemsList, boolean isDesc) {
+        this.artItemList.clear();
+        this.artItemList.addAll(itemsList);
+        if (artItemList == null || artItemList.isEmpty()) {
+            throw new IllegalArgumentException("Student list cannot be null or empty.");
+        }
+
+        for (int i = 0; i < artItemList.size() - 1; i++) {
+            int extremumIndex = findExtremumIndex(artItemList, i, isDesc);
+            if (i != extremumIndex) {
+                swap(artItemList, i, extremumIndex);
+            }
+        }
+        return artItemList;
+    }
     
-        /**
-     * Determines whether the current value should replace the current extremum
-     * based on sort order.
-     *
-     * @param current the current value
-     * @param extremum the current extremum value
-     * @param isDesc specifies the sort order (true for descending, false for
-     * ascending)
-     * @return true if the current value should replace the extremum; false
-     * otherwise
-     */
     private boolean shouldSwap(int current, int extremum, boolean isDesc) {
         return isDesc ? current > extremum : current < extremum;
     }
@@ -80,19 +75,32 @@ public class sort {
         studentSortList.set(j, temp);
     }
     
-    public List<paintingInfo> sortById(List<paintingInfo> itemsList, boolean isDesc) {
-        this.artItemList.clear();
-        this.artItemList.addAll(itemsList);
-        if (artItemList == null || artItemList.isEmpty()) {
-            throw new IllegalArgumentException("Student list cannot be null or empty.");
-        }
-
-        for (int i = 0; i < artItemList.size() - 1; i++) {
-            int extremumIndex = findExtremumIndex(artItemList, i, isDesc);
-            if (i != extremumIndex) {
-                swap(artItemList, i, extremumIndex);
+     public List<paintingInfo> sortByName(List<paintingInfo> unsortedData, boolean isDesc) {
+        
+        List<paintingInfo> dataToSort = new ArrayList(); 
+        dataToSort.addAll(unsortedData);
+        
+        for (int i = 0; i < dataToSort.size() - 1; i++) {
+            //min value
+            int minIndex = i;
+            for (int j = i + 1; j < dataToSort.size(); j++) {
+                // compare and assign
+                if (isDesc) {
+                    if (dataToSort.get(j).getName().compareToIgnoreCase(dataToSort.get(minIndex).getName())>0 ) {
+                        minIndex = j;
+                    }
+                } else {
+                    if (dataToSort.get(j).getName().compareToIgnoreCase(dataToSort.get(minIndex).getName())<0) {
+                        minIndex = j;
+                    }
+                }
             }
+            //swap
+            paintingInfo tempStudent = dataToSort.get(minIndex);
+            dataToSort.set(minIndex, dataToSort.get(i));
+            dataToSort.set(i, tempStudent);
         }
-        return artItemList;
+        return dataToSort;
     }
+    
 }

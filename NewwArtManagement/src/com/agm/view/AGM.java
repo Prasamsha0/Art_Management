@@ -16,6 +16,7 @@ import com.agm.controller.algorithms.sort;
 import com.agm.controller.algorithms.insertionSort;
 import com.agm.controller.algorithms.mergeSort;
 import java.util.ArrayList;
+import com.agm.controller.algorithms.binarySearch;
 
 /**
  *
@@ -54,12 +55,12 @@ public class AGM extends javax.swing.JFrame {
      private void initializeData() {
         artItemList = new LinkedList<>();
         // Registering sample students
-        registerArtwork(new paintingInfo(1238, "Prakriti Mali", "23/03/2024", "Watercolor", "9841489349", 53000, "Narnia Studio","Paper", "100 X 100"));
-        registerArtwork(new paintingInfo(1980, "Prasamsha Singh", "27/01/2024", "Acrylic", "9860997123", 100004, "Chitra Studio","Cloth", "1000 X 600"));
-        registerArtwork(new paintingInfo(1745, "Prasamsha Singh", "27/01/2024", "Acrylic", "9860997123", 100004, "Chitra Studio","Cloth", "1000 X 600"));
-        registerArtwork(new paintingInfo(1128, "Prasamsha Singh", "27/01/2024", "Acrylic", "9860997123", 100004, "Chitra Studio","Cloth", "1000 X 600"));
-        registerArtwork(new paintingInfo(2367, "Prasamsha Singh", "27/01/2024", "Acrylic", "9860997123", 100004, "Chitra Studio","Cloth", "1000 X 600"));
-        registerArtwork(new paintingInfo(1893, "Prasamsha Singh", "27/01/2024", "Acrylic", "9860997123", 100004, "Chitra Studio","Cloth", "1000 X 600"));   
+        registerArtwork(new paintingInfo(0234, "Zenep Mali", "23/03/2024", "Watercolor", "9841489349", 53000, "Narnia Studio","Paper", "100 X 100"));
+        registerArtwork(new paintingInfo(3455, "Aliza Singh", "27/01/2024", "Acrylic", "9860997123", 12903, "Mantra Studio","Cloth", "1000 X 600"));
+        registerArtwork(new paintingInfo(1095, "Rio Cantos", "27/01/2024", "Acrylic", "9860997123", 3456453, "Narsim Studio","Cloth", "1000 X 600"));
+        registerArtwork(new paintingInfo(1008, "Lia Bhatta", "27/01/2024", "Acrylic", "9860997123", 100004, "Arctic Studio","Cloth", "1000 X 600"));
+        registerArtwork(new paintingInfo(2367, "Ria Lama", "27/01/2024", "Acrylic", "9860997123", 45673, "Himaliya Studio","Cloth", "1000 X 600"));
+        registerArtwork(new paintingInfo(3984, "Binu Adhikari", "27/01/2024", "Acrylic", "9860997123", 325433, "Ktm Art Studio","Cloth", "1000 X 600"));   
     }
      
     private void registerArtwork(paintingInfo items) {
@@ -99,7 +100,6 @@ public class AGM extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
@@ -110,6 +110,43 @@ public class AGM extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
+        mnGallery = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jPanel5 = new javax.swing.JPanel();
+        mnmainTableScroll = new javax.swing.JScrollPane();
+        mntable = new javax.swing.JTable();
+        mnSortButton = new javax.swing.JComboBox<>();
+        mnSearchtxt = new javax.swing.JTextField();
+        mnADComboBox = new javax.swing.JComboBox<>();
+        mnSearchButton = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
         mnAddArt = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         sizeError = new javax.swing.JLabel();
@@ -149,21 +186,10 @@ public class AGM extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         mnAboutus = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        mnGallery = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        mnmainTableScroll = new javax.swing.JScrollPane();
-        mntable = new javax.swing.JTable();
-        mnSortButton = new javax.swing.JComboBox<>();
-        mnSearchtxt = new javax.swing.JTextField();
-        mnSortIdButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel36 = new javax.swing.JLabel();
-        mnDecendingButton = new javax.swing.JRadioButton();
-        mnAscendingButton = new javax.swing.JRadioButton();
         pnLoaddingscreen = new javax.swing.JPanel();
         scLoaddingscreen = new javax.swing.JProgressBar();
         imgLS = new javax.swing.JLabel();
@@ -258,99 +284,75 @@ public class AGM extends javax.swing.JFrame {
         jScrollPane3.setMinimumSize(new java.awt.Dimension(1200, 700));
         jScrollPane3.setPreferredSize(new java.awt.Dimension(1200, 700));
 
-        jPanel3.setBackground(new java.awt.Color(247, 247, 249));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setFocusTraversalPolicyProvider(true);
         jPanel3.setMinimumSize(new java.awt.Dimension(1200, 700));
-        jPanel3.setPreferredSize(new java.awt.Dimension(1200, 1300));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1200, 849));
         jPanel3.setLayout(null);
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/home screen.png"))); // NOI18N
         jPanel3.add(jLabel16);
-        jLabel16.setBounds(10, 180, 532, 450);
+        jLabel16.setBounds(0, -10, 532, 460);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/DSC_6186 1.png"))); // NOI18N
         jPanel3.add(jLabel13);
-        jLabel13.setBounds(28, 999, 304, 219);
+        jLabel13.setBounds(20, 570, 304, 219);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Pagoda 1.png"))); // NOI18N
         jPanel3.add(jLabel15);
-        jLabel15.setBounds(397, 999, 307, 219);
+        jLabel15.setBounds(370, 570, 307, 219);
 
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Willian Santiago 1.png"))); // NOI18N
         jPanel3.add(jLabel20);
-        jLabel20.setBounds(796, 999, 306, 219);
-
-        jLabel22.setFont(new java.awt.Font("Sitka Banner", 0, 48)); // NOI18N
-        jLabel22.setText("Admin Panel");
-        jPanel3.add(jLabel22);
-        jLabel22.setBounds(29, 90, 234, 61);
+        jLabel20.setBounds(770, 570, 306, 219);
 
         jLabel30.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel30.setText("Traditional Art");
         jPanel3.add(jLabel30);
-        jLabel30.setBounds(28, 928, 100, 20);
+        jLabel30.setBounds(30, 490, 100, 20);
 
         jLabel31.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel31.setText("Modern Art");
         jPanel3.add(jLabel31);
-        jLabel31.setBounds(796, 928, 79, 20);
+        jLabel31.setBounds(770, 490, 79, 20);
 
         jLabel32.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
         jLabel32.setText("Abstract Art");
         jPanel3.add(jLabel32);
-        jLabel32.setBounds(405, 928, 82, 20);
+        jLabel32.setBounds(380, 490, 82, 20);
 
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
         jPanel3.add(jLabel33);
-        jLabel33.setBounds(28, 966, 304, 27);
+        jLabel33.setBounds(30, 530, 304, 27);
 
         jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
         jPanel3.add(jLabel34);
-        jLabel34.setBounds(796, 966, 306, 27);
+        jLabel34.setBounds(770, 530, 306, 27);
 
         jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
         jPanel3.add(jLabel35);
-        jLabel35.setBounds(405, 966, 299, 27);
+        jLabel35.setBounds(380, 530, 299, 27);
 
-        jLabel29.setFont(new java.awt.Font("Sitka Display", 0, 15)); // NOI18N
+        jPanel4.setBackground(new java.awt.Color(247, 245, 243));
+        jPanel4.setLayout(null);
+
+        jLabel29.setFont(new java.awt.Font("Sitka Display", 0, 24)); // NOI18N
         jLabel29.setText("<html><p>This admin Panel is designed to help or manage </p><p>       the art works effectively and efficiently.  With  </p> <p> functions like add update and delete, you can  </p><p> easily manage the paintings with ease.</p></html>");
+        jPanel4.add(jLabel29);
+        jLabel29.setBounds(54, 160, 570, 236);
 
-        jLabel21.setFont(new java.awt.Font("Sitka Banner", 0, 48)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Sitka Banner", 0, 54)); // NOI18N
         jLabel21.setText("Mandala Art Point");
+        jPanel4.add(jLabel21);
+        jLabel21.setBounds(60, 110, 460, 61);
 
-        jLabel28.setFont(new java.awt.Font("Sitka Banner", 0, 48)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Sitka Banner", 0, 54)); // NOI18N
         jLabel28.setText("Welcome to");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel21)))
-                .addGap(47, 47, 47))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel28)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel28)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel21)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
-        );
+        jPanel4.add(jLabel28);
+        jLabel28.setBounds(80, 40, 350, 61);
 
         jPanel3.add(jPanel4);
-        jPanel4.setBounds(540, 180, 660, 450);
+        jPanel4.setBounds(530, 0, 660, 450);
 
         jScrollPane3.setViewportView(jPanel3);
 
@@ -358,6 +360,341 @@ public class AGM extends javax.swing.JFrame {
         jScrollPane3.setBounds(0, 0, 1200, 700);
 
         jTabbedPane2.addTab("home", mnHome);
+
+        mnGallery.setBackground(new java.awt.Color(247, 247, 249));
+        mnGallery.setForeground(new java.awt.Color(255, 255, 255));
+        mnGallery.setEnabled(false);
+        mnGallery.setFocusable(false);
+        mnGallery.setMaximumSize(new java.awt.Dimension(1200, 700));
+        mnGallery.setMinimumSize(new java.awt.Dimension(1200, 700));
+        mnGallery.setPreferredSize(new java.awt.Dimension(1200, 700));
+        mnGallery.setLayout(null);
+
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(1200, 700));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(1200, 700));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setMaximumSize(new java.awt.Dimension(1200, 1600));
+        jPanel5.setMinimumSize(new java.awt.Dimension(1200, 1600));
+        jPanel5.setPreferredSize(new java.awt.Dimension(1200, 1600));
+        jPanel5.setLayout(null);
+
+        mntable.setBackground(new java.awt.Color(81, 82, 103));
+        mntable.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        mntable.setForeground(new java.awt.Color(255, 255, 255));
+        mntable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ArtID", "Artist Name", "Date", "Meduim", "Contact", "Price", "Studio Address", "Format ", "Size"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        mnmainTableScroll.setViewportView(mntable);
+
+        jPanel5.add(mnmainTableScroll);
+        mnmainTableScroll.setBounds(10, 110, 1160, 140);
+
+        mnSortButton.setBackground(new java.awt.Color(165, 135, 99));
+        mnSortButton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "ID", "Price" }));
+        mnSortButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSortButtonActionPerformed(evt);
+            }
+        });
+        jPanel5.add(mnSortButton);
+        mnSortButton.setBounds(1070, 60, 110, 30);
+
+        mnSearchtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSearchtxtActionPerformed(evt);
+            }
+        });
+        jPanel5.add(mnSearchtxt);
+        mnSearchtxt.setBounds(590, 60, 160, 30);
+
+        mnADComboBox.setBackground(new java.awt.Color(165, 135, 99));
+        mnADComboBox.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        mnADComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "lowest to higest", "highest to lowest" }));
+        mnADComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnADComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel5.add(mnADComboBox);
+        mnADComboBox.setBounds(850, 60, 127, 30);
+
+        mnSearchButton.setBackground(new java.awt.Color(165, 135, 99));
+        mnSearchButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        mnSearchButton.setText("search");
+        mnSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnSearchButtonActionPerformed(evt);
+            }
+        });
+        jPanel5.add(mnSearchButton);
+        mnSearchButton.setBounds(470, 60, 110, 30);
+
+        jPanel6.setBackground(new java.awt.Color(233, 224, 209));
+        jPanel6.setMinimumSize(new java.awt.Dimension(374, 552));
+        jPanel6.setPreferredSize(new java.awt.Dimension(374, 552));
+        jPanel6.setLayout(null);
+
+        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Pagoda 2.png"))); // NOI18N
+        jPanel6.add(jLabel44);
+        jLabel44.setBounds(30, 10, 280, 390);
+
+        jLabel45.setFont(new java.awt.Font("Sitka Banner", 0, 36)); // NOI18N
+        jLabel45.setText("Patan Valley");
+        jPanel6.add(jLabel45);
+        jLabel45.setBounds(110, 410, 167, 46);
+
+        jLabel36.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
+        jLabel36.setText("190000$");
+        jPanel6.add(jLabel36);
+        jLabel36.setBounds(150, 460, 79, 45);
+
+        jPanel5.add(jPanel6);
+        jPanel6.setBounds(20, 390, 360, 570);
+
+        jPanel8.setBackground(new java.awt.Color(233, 224, 209));
+        jPanel8.setMaximumSize(new java.awt.Dimension(374, 552));
+        jPanel8.setMinimumSize(new java.awt.Dimension(374, 552));
+        jPanel8.setPreferredSize(new java.awt.Dimension(374, 552));
+
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/AmaDablam_EBCTREKNEPAL 1.png"))); // NOI18N
+
+        jLabel51.setFont(new java.awt.Font("Sitka Banner", 0, 36)); // NOI18N
+        jLabel51.setText("EBC painting");
+
+        jLabel50.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
+        jLabel50.setText("300000$");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel51)
+                .addGap(89, 89, 89))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel40))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(jLabel50)))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel51)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel50)
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(jPanel8);
+        jPanel8.setBounds(810, 390, 360, 570);
+
+        jPanel9.setBackground(new java.awt.Color(233, 224, 209));
+        jPanel9.setMaximumSize(new java.awt.Dimension(374, 552));
+        jPanel9.setMinimumSize(new java.awt.Dimension(374, 552));
+        jPanel9.setPreferredSize(new java.awt.Dimension(374, 552));
+        jPanel9.setLayout(null);
+
+        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Mandalas_ART_NEPAL 1.png"))); // NOI18N
+        jPanel9.add(jLabel41);
+        jLabel41.setBounds(40, 20, 330, 380);
+
+        jLabel42.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
+        jLabel42.setText("1000000$");
+        jPanel9.add(jLabel42);
+        jLabel42.setBounds(180, 480, 110, 31);
+
+        jLabel43.setFont(new java.awt.Font("Sitka Banner", 0, 36)); // NOI18N
+        jLabel43.setText("Thanka Mandala");
+        jPanel9.add(jLabel43);
+        jLabel43.setBounds(110, 430, 260, 46);
+
+        jPanel5.add(jPanel9);
+        jPanel9.setBounds(389, 393, 410, 570);
+
+        jPanel10.setBackground(new java.awt.Color(233, 224, 209));
+        jPanel10.setMaximumSize(new java.awt.Dimension(374, 552));
+        jPanel10.setMinimumSize(new java.awt.Dimension(374, 552));
+        jPanel10.setPreferredSize(new java.awt.Dimension(374, 552));
+
+        jLabel39.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/ShreeYantaThangka 1.png"))); // NOI18N
+
+        jLabel49.setFont(new java.awt.Font("Sitka Banner", 0, 36)); // NOI18N
+        jLabel49.setText("Mandala");
+
+        jLabel48.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
+        jLabel48.setText("23400$");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel39))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel48))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel49)))
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel48)
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(jPanel10);
+        jPanel10.setBounds(20, 970, 360, 560);
+
+        jPanel11.setBackground(new java.awt.Color(233, 224, 209));
+        jPanel11.setMaximumSize(new java.awt.Dimension(374, 552));
+        jPanel11.setMinimumSize(new java.awt.Dimension(374, 552));
+        jPanel11.setPreferredSize(new java.awt.Dimension(374, 552));
+
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/MountainAmaDablam 1.png"))); // NOI18N
+
+        jLabel46.setFont(new java.awt.Font("Sitka Banner", 0, 36)); // NOI18N
+        jLabel46.setText("Lone Yak");
+
+        jLabel47.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
+        jLabel47.setText("18000$");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel38)
+                .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel46)
+                        .addGap(139, 139, 139))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel47)
+                        .addGap(166, 166, 166))))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel47)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(jPanel11);
+        jPanel11.setBounds(389, 968, 410, 560);
+
+        jPanel12.setBackground(new java.awt.Color(233, 224, 209));
+        jPanel12.setMaximumSize(new java.awt.Dimension(374, 552));
+        jPanel12.setMinimumSize(new java.awt.Dimension(374, 552));
+        jPanel12.setPreferredSize(new java.awt.Dimension(374, 552));
+
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Modern_Leather_chair_with_Vertical_Mockup_on_Low_credenza_98237640-c37e-45e7-81a8-96cb2344c651 1.png"))); // NOI18N
+
+        jLabel52.setFont(new java.awt.Font("Sitka Banner", 0, 36)); // NOI18N
+        jLabel52.setText("Abstract Painting");
+
+        jLabel53.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
+        jLabel53.setText("10000$");
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel37)
+                            .addComponent(jLabel52)))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(jLabel53)))
+                .addGap(0, 49, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel37)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel53)
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
+
+        jPanel5.add(jPanel12);
+        jPanel12.setBounds(810, 970, 360, 560);
+
+        jSeparator1.setBackground(new java.awt.Color(102, 51, 0));
+        jPanel5.add(jSeparator1);
+        jSeparator1.setBounds(0, 295, 1253, 10);
+
+        jLabel22.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
+        jLabel22.setText("Collections");
+        jPanel5.add(jLabel22);
+        jLabel22.setBounds(10, 270, 120, 31);
+
+        jLabel54.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel54.setText("sort by");
+        jPanel5.add(jLabel54);
+        jLabel54.setBounds(1010, 70, 43, 16);
+
+        jLabel55.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel55.setText("order");
+        jPanel5.add(jLabel55);
+        jLabel55.setBounds(790, 70, 29, 16);
+
+        jScrollPane1.setViewportView(jPanel5);
+
+        mnGallery.add(jScrollPane1);
+        jScrollPane1.setBounds(0, 0, 1200, 700);
+
+        jTabbedPane2.addTab("items list", mnGallery);
 
         mnAddArt.setBackground(new java.awt.Color(193, 227, 254));
         mnAddArt.setLayout(null);
@@ -671,16 +1008,16 @@ public class AGM extends javax.swing.JFrame {
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/img 5.jpg"))); // NOI18N
         jLabel17.setText("jLabel17");
         mnFeatured.add(jLabel17);
-        jLabel17.setBounds(20, 190, 390, 310);
+        jLabel17.setBounds(180, 240, 500, 310);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/img 1.jpg"))); // NOI18N
         jLabel11.setText("jLabel11");
         mnFeatured.add(jLabel11);
-        jLabel11.setBounds(620, 400, 340, 160);
+        jLabel11.setBounds(580, 380, 610, 350);
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/img 2.jpg"))); // NOI18N
         mnFeatured.add(jLabel14);
-        jLabel14.setBounds(460, 70, 560, 270);
+        jLabel14.setBounds(620, -10, 560, 300);
 
         jTabbedPane2.addTab("featured", mnFeatured);
 
@@ -688,154 +1025,50 @@ public class AGM extends javax.swing.JFrame {
         mnAboutus.setFocusTraversalPolicyProvider(true);
         mnAboutus.setLayout(null);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jLabel24.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel24.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("<html><p>Established in the 1950s, Mandala Art Gallery is one of the </p><p>oldest and most renowned art galleries in Nepal. Located in </p><p>the heart of Kathmandu, the gallery has been a hub for art </p><p>enthusiasts, offering a unique blend of traditional and </p><p>contemporary artworks. With a special focus on the intricate </p><p>and mesmerizing Mandala art, the gallery has become a </p><p>symbol of Nepal's rich artistic heritage. Through the years, </p><p>Mandala Art Gallery has continued to showcase exceptional </p><p>works that celebrate the cultural and spiritual essence of </p><p>Nepal, making it a must-visit destination for art lovers from </p><p>around the world.</p><html>");
+
         jLabel23.setBackground(new java.awt.Color(0, 0, 0));
         jLabel23.setFont(new java.awt.Font("SansSerif", 1, 48)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("About US");
-        mnAboutus.add(jLabel23);
-        jLabel23.setBounds(490, 210, 300, 70);
-
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-
-        jLabel24.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("<html><p>Established in the 1950s, Mandala Art Gallery is one of the </p><p>oldest and most renowned art galleries in Nepal. Located in </p><p>the heart of Kathmandu, the gallery has been a hub for art </p><p>enthusiasts, offering a unique blend of traditional and </p><p>contemporary artworks. With a special focus on the intricate </p><p>and mesmerizing Mandala art, the gallery has become a </p><p>symbol of Nepal's rich artistic heritage. Through the years, </p><p>Mandala Art Gallery has continued to showcase exceptional </p><p>works that celebrate the cultural and spiritual essence of </p><p>Nepal, making it a must-visit destination for art lovers from </p><p>around the world.</p><html>");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(74, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(106, 106, 106))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         mnAboutus.add(jPanel1);
-        jPanel1.setBounds(440, 210, 410, 310);
+        jPanel1.setBounds(440, 210, 730, 430);
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Resurrecting an Ancient Fabric More Precious Than Silk That Hasn't Been Spun for Centuries 1.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Resurrecting an Ancient Fabric More Precious Than Silk That Hasn't Been Spun for Centuries 1 (1).png"))); // NOI18N
         mnAboutus.add(jLabel12);
-        jLabel12.setBounds(64, 76, 443, 303);
+        jLabel12.setBounds(40, 70, 690, 440);
 
         jTabbedPane2.addTab("about us", mnAboutus);
-
-        mnGallery.setBackground(new java.awt.Color(247, 247, 249));
-        mnGallery.setForeground(new java.awt.Color(255, 255, 255));
-        mnGallery.setEnabled(false);
-        mnGallery.setFocusable(false);
-        mnGallery.setMaximumSize(new java.awt.Dimension(1200, 700));
-        mnGallery.setMinimumSize(new java.awt.Dimension(1200, 700));
-        mnGallery.setPreferredSize(new java.awt.Dimension(1200, 700));
-        mnGallery.setLayout(null);
-
-        mntable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ArtID", "Artist Name", "Date", "Meduim", "Contact", "Price", "Studio Address", "Format ", "Size"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        mnmainTableScroll.setViewportView(mntable);
-
-        mnSortButton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "ID", "Price" }));
-        mnSortButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnSortButtonActionPerformed(evt);
-            }
-        });
-
-        mnSearchtxt.setText("jTextField1");
-        mnSearchtxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnSearchtxtActionPerformed(evt);
-            }
-        });
-
-        mnSortIdButton.setText("sort id ");
-        mnSortIdButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnSortIdButtonActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("sort name");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel36.setText("search");
-
-        mnDecendingButton.setText("highest to lowest");
-
-        mnAscendingButton.setText("lowest to higest ");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(mnmainTableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 1160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(mnAscendingButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(mnDecendingButton, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(96, 96, 96)
-                        .addComponent(mnSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(mnSortIdButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(mnSortButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 23, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(mnAscendingButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(mnSortIdButton)
-                    .addComponent(mnSortButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mnSearchtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel36)
-                    .addComponent(mnDecendingButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mnmainTableScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(480, Short.MAX_VALUE))
-        );
-
-        mnGallery.add(jPanel5);
-        jPanel5.setBounds(0, 0, 1200, 690);
-
-        jTabbedPane2.addTab("items list", mnGallery);
 
         mnPanel.add(jTabbedPane2);
         jTabbedPane2.setBounds(0, 0, 1200, 700);
@@ -1236,12 +1469,6 @@ public class AGM extends javax.swing.JFrame {
     private void mnSearchtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSearchtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnSearchtxtActionPerformed
-
-    private void mnSortIdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSortIdButtonActionPerformed
-        // TODO add your handling code here:
-        List<paintingInfo> sortedList = selectionSort.sortById(artItemList, false);
-        addArtwork(sortedList);
-    }//GEN-LAST:event_mnSortIdButtonActionPerformed
     
     private void updateTable(List<paintingInfo> sortedList) {
     DefaultTableModel model = (DefaultTableModel) mntable.getModel();
@@ -1252,40 +1479,98 @@ public class AGM extends javax.swing.JFrame {
     }
     }
     
+    //this is a helper method
+    private void registerArtworkFromTable() {
+    artItemList.clear(); // Clear the list to avoid duplicates
+    DefaultTableModel model = (DefaultTableModel) mntable.getModel();
+
+    // Reconstruct artItemList from the table
+    for (int i = 0; i < model.getRowCount(); i++) {
+        paintingInfo art = new paintingInfo(
+            (int) model.getValueAt(i, 0), // ID
+            (String) model.getValueAt(i, 1), // Name
+            (String) model.getValueAt(i, 2), // Date
+            (String) model.getValueAt(i, 3), // Medium
+            (String) model.getValueAt(i, 4), // Contact
+            (int) model.getValueAt(i, 5), // Price
+            (String) model.getValueAt(i, 6), // Address
+            (String) model.getValueAt(i, 7), // Format
+            (String) model.getValueAt(i, 8) // Size
+        );
+        artItemList.add(art);
+    }
+}
+
     
     private void mnSortButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSortButtonActionPerformed
-        // TODO add your handling code here:
-            // Get the selected option from the ComboBox (assuming it's called sortComboBox)
-    String selectedSortOption = (String) mnSortButton.getSelectedItem();
+        registerArtworkFromTable(); 
+        String order = mnADComboBox.getSelectedItem().toString(); // Get sort order
+    String selectedCriteria = mnSortButton.getSelectedItem().toString(); // Get field to sort by
+    List<paintingInfo> sortedList;
 
+    boolean isDesc = order.equals("highest to lowest");
+    System.out.println("Order: " + order + ", Is Descending: " + isDesc + ", Selected Criteria: " + selectedCriteria);
 
-    // Check the selected option and perform sorting accordingly
-    if ("Name".equals(selectedSortOption)) 
-    {
-        List<paintingInfo> sortedList = insertionSort.sortByName(artItemList, false); 
-        // Assuming addArtwork is a method to display or update the artwork list
-        addArtwork(sortedList);  // Update the UI with the sorted list
+    switch (selectedCriteria) {
+        case "Name":
+            sortedList = new insertionSort().sortByName(artItemList, isDesc);
+            break;
+        case "ID":
+            sortedList = new sort().sortById(artItemList, isDesc);
+            break;
+        case "Price":
+            sortedList = new mergeSort().mergeSortByPrice(artItemList, isDesc);
+            break;
+        default:
+            System.out.println("Invalid Criteria: " + selectedCriteria);
+            return;
     }
-    
-    else if ("ID".equals(selectedSortOption)) 
-    {
-        // TODO add your handling code here:
-        List<paintingInfo> sortedList = selectionSort.sortById(artItemList, false);
-        addArtwork(sortedList);
-    }
-    
-    else if ("Price".equals(selectedSortOption))
-    {
-        List<paintingInfo> sortedList = MergeSort.sort(artItemList);
-        addArtwork(sortedList);
+
+    updateTable(sortedList); // Update the UI with the sorted data
     }//GEN-LAST:event_mnSortButtonActionPerformed
-    }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        List<paintingInfo> sortedList = insertionSort.sortByName(artItemList, false); 
-        // Assuming addArtwork is a method to display or update the artwork list
-        addArtwork(sortedList);  // Update the UI with the sorted list
-    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void mnADComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnADComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnADComboBoxActionPerformed
+
+    private void mnSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSearchButtonActionPerformed
+        // TODO add your handling code here:
+     sort selectionSort = new sort();
+    List<paintingInfo> sortedList = selectionSort.sortByName(artItemList, false); // Ascending order
+    binarySearch search = new binarySearch();
+    paintingInfo searchedData = search.searchByName(mnSearchtxt.getText().trim(), sortedList, 0, sortedList.size() - 1);
+
+    if (searchedData != null) {
+        DefaultTableModel model = (DefaultTableModel) mntable.getModel();
+        model.setRowCount(0); // Clear the table
+
+        // Add the searched item as the first row
+        model.addRow(new Object[]{
+            searchedData.getArtId(), searchedData.getName(), searchedData.getDate(), searchedData.getMedium(),
+            searchedData.getContact(), searchedData.getPrice(), searchedData.getAddress(), searchedData.getFormatt(),
+            searchedData.getSize()
+        });
+
+        // Add the rest of the sorted items except the searched one
+        for (paintingInfo item : sortedList) {
+            if (!item.equals(searchedData)) {
+                model.addRow(new Object[]{
+                    item.getArtId(), item.getName(), item.getDate(), item.getMedium(),
+                    item.getContact(), item.getPrice(), item.getAddress(), item.getFormatt(),
+                    item.getSize()
+                });
+            }
+        }
+
+        // Highlight the searched item in the table
+        mntable.setRowSelectionInterval(0, 0); // Select the first row
+        mntable.scrollRectToVisible(mntable.getCellRect(0, 0, true)); // Ensure the row is visible
+
+    } else {
+        JOptionPane.showMessageDialog(this, "Invalid name.", "Name does not exist", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_mnSearchButtonActionPerformed
     
     private void resetFormFields() {
     // Reset the form fields after successful update
@@ -1346,7 +1631,6 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JLabel dateError;
     private javax.swing.JLabel idError;
     private javax.swing.JLabel imgLS;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1377,18 +1661,45 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lgImg;
     private javax.swing.JLabel lgPasswordError;
@@ -1397,13 +1708,12 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JPasswordField lgpasswordtxt;
     private javax.swing.JTextField lgusernametxt;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JComboBox<String> mnADComboBox;
     private javax.swing.JPanel mnAboutus;
     private javax.swing.JPanel mnAddArt;
     private javax.swing.JButton mnAddButton;
-    private javax.swing.JRadioButton mnAscendingButton;
     private javax.swing.JTextField mnContacttxt;
     private javax.swing.JTextField mnDatetxt;
-    private javax.swing.JRadioButton mnDecendingButton;
     private javax.swing.JButton mnDeleteButton;
     private javax.swing.JPanel mnFeatured;
     private javax.swing.JComboBox<String> mnFormattxt;
@@ -1414,10 +1724,10 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JTextField mnNametxt;
     private javax.swing.JPanel mnPanel;
     private javax.swing.JTextField mnPricetxt;
+    private javax.swing.JButton mnSearchButton;
     private javax.swing.JTextField mnSearchtxt;
     private javax.swing.JTextField mnSizetxt;
     private javax.swing.JComboBox<String> mnSortButton;
-    private javax.swing.JButton mnSortIdButton;
     private javax.swing.JTextField mnStudioAddresstxt;
     private javax.swing.JButton mnUpdateButton;
     private javax.swing.JScrollPane mnmainTableScroll;
