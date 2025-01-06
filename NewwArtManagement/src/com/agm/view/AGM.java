@@ -82,6 +82,8 @@ public class AGM extends javax.swing.JFrame {
     private void initComponents() {
 
         loginPanel = new javax.swing.JPanel();
+        jLabel57 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
         lgusernametxt = new javax.swing.JTextField();
         lgUsernamError = new javax.swing.JLabel();
         lgPasswordError = new javax.swing.JLabel();
@@ -147,6 +149,7 @@ public class AGM extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
         mnAddArt = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         sizeError = new javax.swing.JLabel();
@@ -199,6 +202,16 @@ public class AGM extends javax.swing.JFrame {
         loginPanel.setMinimumSize(new java.awt.Dimension(1200, 700));
         loginPanel.setPreferredSize(new java.awt.Dimension(1200, 700));
         loginPanel.setLayout(null);
+
+        jLabel57.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel57.setText("password");
+        loginPanel.add(jLabel57);
+        jLabel57.setBounds(870, 410, 110, 16);
+
+        jLabel58.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel58.setText("username");
+        loginPanel.add(jLabel58);
+        jLabel58.setBounds(870, 320, 80, 16);
 
         lgusernametxt.setBackground(java.awt.SystemColor.controlHighlight);
         lgusernametxt.setText("p");
@@ -682,12 +695,17 @@ public class AGM extends javax.swing.JFrame {
         jLabel54.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel54.setText("sort by");
         jPanel5.add(jLabel54);
-        jLabel54.setBounds(1010, 70, 43, 16);
+        jLabel54.setBounds(1030, 70, 43, 16);
 
         jLabel55.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel55.setText("order");
         jPanel5.add(jLabel55);
-        jLabel55.setBounds(790, 70, 29, 16);
+        jLabel55.setBounds(810, 70, 29, 16);
+
+        jLabel56.setFont(new java.awt.Font("Sitka Banner", 0, 64)); // NOI18N
+        jLabel56.setText("Add Art");
+        jPanel5.add(jLabel56);
+        jLabel56.setBounds(20, 20, 390, 70);
 
         jScrollPane1.setViewportView(jPanel5);
 
@@ -702,6 +720,9 @@ public class AGM extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(159, 210, 250));
         jPanel2.setMinimumSize(new java.awt.Dimension(702, 452));
         jPanel2.setPreferredSize(new java.awt.Dimension(702, 452));
+        jPanel2.setLayout(null);
+        jPanel2.add(sizeError);
+        sizeError.setBounds(25, 397, 211, 21);
 
         mnSizetxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnSizetxt.setText("12 X 123");
@@ -711,9 +732,13 @@ public class AGM extends javax.swing.JFrame {
                 mnSizetxtActionPerformed(evt);
             }
         });
+        jPanel2.add(mnSizetxt);
+        mnSizetxt.setBounds(30, 360, 211, 40);
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel8.setText("Size");
+        jPanel2.add(jLabel8);
+        jLabel8.setBounds(40, 320, 130, 20);
 
         mnFormattxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnFormattxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paper", "Cloth", "Glass" }));
@@ -723,12 +748,18 @@ public class AGM extends javax.swing.JFrame {
                 mnFormattxtActionPerformed(evt);
             }
         });
+        jPanel2.add(mnFormattxt);
+        mnFormattxt.setBounds(271, 354, 159, 40);
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel5.setText("Format");
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(280, 310, 90, 20);
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel9.setText("Meduim");
+        jPanel2.add(jLabel9);
+        jLabel9.setBounds(460, 310, 100, 20);
 
         mnMeduimtxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnMeduimtxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acrylic", "Watercolor", "Oil", "Charcoal" }));
@@ -739,6 +770,10 @@ public class AGM extends javax.swing.JFrame {
                 mnMeduimtxtActionPerformed(evt);
             }
         });
+        jPanel2.add(mnMeduimtxt);
+        mnMeduimtxt.setBounds(460, 350, 167, 40);
+        jPanel2.add(contactError);
+        contactError.setBounds(500, 244, 182, 20);
 
         mnContacttxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnContacttxt.setText("9812345678");
@@ -748,14 +783,22 @@ public class AGM extends javax.swing.JFrame {
                 mnContacttxtActionPerformed(evt);
             }
         });
+        jPanel2.add(mnContacttxt);
+        mnContacttxt.setBounds(500, 201, 182, 37);
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel4.setText("Contact");
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(500, 163, 90, 20);
 
         nameError.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jPanel2.add(nameError);
+        nameError.setBounds(271, 97, 211, 20);
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel7.setText("Address");
+        jPanel2.add(jLabel7);
+        jLabel7.setBounds(271, 163, 130, 20);
 
         mnStudioAddresstxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnStudioAddresstxt.setText("bale");
@@ -765,6 +808,10 @@ public class AGM extends javax.swing.JFrame {
                 mnStudioAddresstxtActionPerformed(evt);
             }
         });
+        jPanel2.add(mnStudioAddresstxt);
+        mnStudioAddresstxt.setBounds(271, 201, 211, 37);
+        jPanel2.add(addressError);
+        addressError.setBounds(271, 244, 211, 20);
 
         mnPricetxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnPricetxt.setText("13445");
@@ -774,11 +821,19 @@ public class AGM extends javax.swing.JFrame {
                 mnPricetxtActionPerformed(evt);
             }
         });
+        jPanel2.add(mnPricetxt);
+        mnPricetxt.setBounds(25, 201, 211, 37);
+        jPanel2.add(priceError);
+        priceError.setBounds(25, 244, 211, 20);
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel3.setText("Price");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(25, 163, 120, 20);
 
         dateError.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jPanel2.add(dateError);
+        dateError.setBounds(500, 97, 168, 20);
 
         mnDatetxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnDatetxt.setText("dd/mm/yyyy");
@@ -788,9 +843,13 @@ public class AGM extends javax.swing.JFrame {
                 mnDatetxtActionPerformed(evt);
             }
         });
+        jPanel2.add(mnDatetxt);
+        mnDatetxt.setBounds(500, 52, 182, 39);
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel6.setText("Date");
+        jPanel2.add(jLabel6);
+        jLabel6.setBounds(500, 26, 100, 20);
 
         mnNametxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnNametxt.setText("afgg");
@@ -800,9 +859,13 @@ public class AGM extends javax.swing.JFrame {
                 mnNametxtActionPerformed(evt);
             }
         });
+        jPanel2.add(mnNametxt);
+        mnNametxt.setBounds(271, 52, 211, 39);
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel10.setText("Name");
+        jPanel2.add(jLabel10);
+        jLabel10.setBounds(271, 26, 110, 20);
 
         mnIDtxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnIDtxt.setText("1111");
@@ -812,134 +875,20 @@ public class AGM extends javax.swing.JFrame {
                 mnIDtxtActionPerformed(evt);
             }
         });
+        jPanel2.add(mnIDtxt);
+        mnIDtxt.setBounds(25, 52, 211, 39);
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel1.setText("art ID");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(25, 26, 100, 20);
 
         idError.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(116, 116, 116))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(mnSizetxt)
-                                .addGap(35, 35, 35)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mnFormattxt, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mnMeduimtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(mnPricetxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mnIDtxt)
-                            .addComponent(idError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(sizeError, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                            .addComponent(priceError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(mnStudioAddresstxt, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                                    .addComponent(addressError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(mnContacttxt)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(contactError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(mnNametxt)
-                                    .addComponent(nameError, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(mnDatetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dateError, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mnNametxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(mnDatetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(mnIDtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idError, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameError, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateError, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(mnContacttxt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mnStudioAddresstxt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mnPricetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addressError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(contactError, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(priceError, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(71, 71, 71)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(mnFormattxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(mnMeduimtxt)
-                                .addGap(3, 3, 3)))
-                        .addGap(87, 87, 87))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mnSizetxt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sizeError, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63))))
-        );
+        jPanel2.add(idError);
+        idError.setBounds(25, 97, 211, 20);
 
         mnAddArt.add(jPanel2);
-        jPanel2.setBounds(480, 80, 702, 452);
+        jPanel2.setBounds(480, 70, 702, 452);
 
         mnUpdateButton.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnUpdateButton.setText("Update");
@@ -1274,7 +1223,7 @@ public class AGM extends javax.swing.JFrame {
         if (checkDuplicateID(items)) {
             // Add the student if no duplicate is found
             mnIDtxt.setBorder(createBorder(redColor));  // Changed to use createBorder
-            idError.setText("Duplicate ID");
+            JOptionPane.showMessageDialog(this, "ID already exists", "ID Error", JOptionPane.ERROR_MESSAGE);
         } else {
             artItemList.add(items);
             addArtwork(artItemList);
@@ -1550,6 +1499,7 @@ public class AGM extends javax.swing.JFrame {
             searchedData.getArtId(), searchedData.getName(), searchedData.getDate(), searchedData.getMedium(),
             searchedData.getContact(), searchedData.getPrice(), searchedData.getAddress(), searchedData.getFormatt(),
             searchedData.getSize()
+                
         });
 
         // Add the rest of the sorted items except the searched one
@@ -1682,6 +1632,9 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
