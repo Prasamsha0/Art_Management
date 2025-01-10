@@ -105,13 +105,13 @@ public class AGM extends javax.swing.JFrame {
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
+        mnLineimg1 = new javax.swing.JLabel();
+        mnLineimg2 = new javax.swing.JLabel();
+        mnLineimg3 = new javax.swing.JLabel();
+        mnHDescriptionPanel = new javax.swing.JPanel();
+        mnDescrition = new javax.swing.JLabel();
+        mnHTitle2 = new javax.swing.JLabel();
+        mnHTitle1 = new javax.swing.JLabel();
         mnGallery = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel5 = new javax.swing.JPanel();
@@ -305,11 +305,11 @@ public class AGM extends javax.swing.JFrame {
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/home screen.png"))); // NOI18N
         jPanel3.add(jLabel16);
-        jLabel16.setBounds(0, -10, 532, 460);
+        jLabel16.setBounds(0, -10, 532, 470);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/DSC_6186 1.png"))); // NOI18N
         jPanel3.add(jLabel13);
-        jLabel13.setBounds(20, 570, 304, 219);
+        jLabel13.setBounds(30, 580, 304, 219);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Pagoda 1.png"))); // NOI18N
         jPanel3.add(jLabel15);
@@ -334,38 +334,38 @@ public class AGM extends javax.swing.JFrame {
         jPanel3.add(jLabel32);
         jLabel32.setBounds(380, 490, 82, 20);
 
-        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
-        jPanel3.add(jLabel33);
-        jLabel33.setBounds(30, 530, 304, 27);
+        mnLineimg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
+        jPanel3.add(mnLineimg1);
+        mnLineimg1.setBounds(30, 530, 304, 27);
 
-        jLabel34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
-        jPanel3.add(jLabel34);
-        jLabel34.setBounds(770, 530, 306, 27);
+        mnLineimg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
+        jPanel3.add(mnLineimg2);
+        mnLineimg2.setBounds(380, 530, 299, 27);
 
-        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
-        jPanel3.add(jLabel35);
-        jLabel35.setBounds(380, 530, 299, 27);
+        mnLineimg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
+        jPanel3.add(mnLineimg3);
+        mnLineimg3.setBounds(770, 530, 306, 27);
 
-        jPanel4.setBackground(new java.awt.Color(247, 245, 243));
-        jPanel4.setLayout(null);
+        mnHDescriptionPanel.setBackground(new java.awt.Color(247, 245, 243));
+        mnHDescriptionPanel.setLayout(null);
 
-        jLabel29.setFont(new java.awt.Font("Sitka Display", 0, 24)); // NOI18N
-        jLabel29.setText("<html><p>This admin Panel is designed to help or manage </p><p>       the art works effectively and efficiently.  With  </p> <p> functions like add update and delete, you can  </p><p> easily manage the paintings with ease.</p></html>");
-        jPanel4.add(jLabel29);
-        jLabel29.setBounds(54, 160, 570, 236);
+        mnDescrition.setFont(new java.awt.Font("Sitka Display", 0, 24)); // NOI18N
+        mnDescrition.setText("<html><p>This admin Panel is designed to help or manage </p><p>       the art works effectively and efficiently.  With  </p> <p> functions like add update and delete, you can  </p><p> easily manage the paintings with ease.</p></html>");
+        mnHDescriptionPanel.add(mnDescrition);
+        mnDescrition.setBounds(54, 160, 570, 236);
 
-        jLabel21.setFont(new java.awt.Font("Sitka Banner", 0, 54)); // NOI18N
-        jLabel21.setText("Mandala Art Point");
-        jPanel4.add(jLabel21);
-        jLabel21.setBounds(60, 110, 460, 61);
+        mnHTitle2.setFont(new java.awt.Font("Sitka Banner", 0, 54)); // NOI18N
+        mnHTitle2.setText("Mandala Art Point");
+        mnHDescriptionPanel.add(mnHTitle2);
+        mnHTitle2.setBounds(60, 110, 460, 61);
 
-        jLabel28.setFont(new java.awt.Font("Sitka Banner", 0, 54)); // NOI18N
-        jLabel28.setText("Welcome to");
-        jPanel4.add(jLabel28);
-        jLabel28.setBounds(80, 40, 350, 61);
+        mnHTitle1.setFont(new java.awt.Font("Sitka Banner", 0, 54)); // NOI18N
+        mnHTitle1.setText("Welcome to");
+        mnHDescriptionPanel.add(mnHTitle1);
+        mnHTitle1.setBounds(80, 40, 350, 61);
 
-        jPanel3.add(jPanel4);
-        jPanel4.setBounds(530, 0, 660, 450);
+        jPanel3.add(mnHDescriptionPanel);
+        mnHDescriptionPanel.setBounds(530, 0, 660, 450);
 
         jScrollPane3.setViewportView(jPanel3);
 
@@ -1462,7 +1462,7 @@ public class AGM extends javax.swing.JFrame {
 
     switch (selectedCriteria) {
         case "Name":
-            sortedList = new insertionSort().sortByName(artItemList, isDesc);
+            sortedList = new insertionSort().sortByname(artItemList, isDesc);
             break;
         case "ID":
             sortedList = new sort().sortById(artItemList, isDesc);
@@ -1594,22 +1594,16 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
@@ -1645,7 +1639,6 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
@@ -1668,11 +1661,18 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JTextField mnContacttxt;
     private javax.swing.JTextField mnDatetxt;
     private javax.swing.JButton mnDeleteButton;
+    private javax.swing.JLabel mnDescrition;
     private javax.swing.JPanel mnFeatured;
     private javax.swing.JComboBox<String> mnFormattxt;
     private javax.swing.JPanel mnGallery;
+    private javax.swing.JPanel mnHDescriptionPanel;
+    private javax.swing.JLabel mnHTitle1;
+    private javax.swing.JLabel mnHTitle2;
     private javax.swing.JPanel mnHome;
     private javax.swing.JTextField mnIDtxt;
+    private javax.swing.JLabel mnLineimg1;
+    private javax.swing.JLabel mnLineimg2;
+    private javax.swing.JLabel mnLineimg3;
     private javax.swing.JComboBox<String> mnMeduimtxt;
     private javax.swing.JTextField mnNametxt;
     private javax.swing.JPanel mnPanel;

@@ -10,18 +10,27 @@ import java.util.ArrayList;
  *
  * @author Prasamsha Singh
  */
-public class insertionSort {
-
-
+    public class insertionSort {
+     List<paintingInfo> artItemList;
+     
+     public insertionSort(){
+        artItemList = new ArrayList<>();
+    }
     /**
      * Sorts the list of paintingInfo objects by name using Insertion Sort algorithm.
      * 
-     * @param artItemList the list of paintingInfo objects
+     * 
+     * @param itemsList
      * @param isDesc specifies whether to sort in descending (true) or ascending (false)
      * @return the sorted list of paintingInfo objects
      */
-    public List<paintingInfo> sortByName(List<paintingInfo> artItemList, boolean isDesc) {
+    public List<paintingInfo> sortByName(List<paintingInfo> itemsList, boolean isDesc) {
         // Loop through the list starting from the second element (index 1)
+        this.artItemList.clear();
+        this.artItemList.addAll(itemsList);
+                if (artItemList == null || artItemList.isEmpty()) {
+            throw new IllegalArgumentException("The list cannot be null or empty.");
+        }
         for (int i = 1; i < artItemList.size(); i++) {
             paintingInfo current = artItemList.get(i); // The current element to be inserted
             int j = i - 1;
@@ -39,6 +48,35 @@ public class insertionSort {
 
         return artItemList; // Return the sorted list
     }
+    
+public List<paintingInfo> sortByname(List<paintingInfo> unsortedData, boolean isDesc) {
+    // Create a copy of the data to sort
+    List<paintingInfo> dataToSort = new ArrayList<>();
+    dataToSort.addAll(unsortedData);
+
+    for (int i = 1; i < dataToSort.size(); i++) {
+        // Extract the current element
+        paintingInfo current = dataToSort.get(i);
+        int j = i - 1;
+
+        // Move elements of the sorted portion to make space for the current element
+        while (j >= 0 && (
+                isDesc 
+                ? dataToSort.get(j).getName().compareToIgnoreCase(current.getName()) < 0 
+                : dataToSort.get(j).getName().compareToIgnoreCase(current.getName()) > 0
+        )) {
+            dataToSort.set(j + 1, dataToSort.get(j));
+            j--;
+        }
+
+        // Insert the current element at its correct position
+        dataToSort.set(j + 1, current);
+    }
+
+    return dataToSort;
+}
+
+    
 
     /**
      * Compares two names to determine if they should be swapped based on the order (ascending or descending).

@@ -24,7 +24,7 @@ public class sort {
         this.artItemList.clear();
         this.artItemList.addAll(itemsList);
         if (artItemList == null || artItemList.isEmpty()) {
-            throw new IllegalArgumentException("Student list cannot be null or empty.");
+            throw new IllegalArgumentException("The list cannot be null or empty.");
         }
 
         for (int i = 0; i < artItemList.size() - 1; i++) {
@@ -44,17 +44,17 @@ public class sort {
      * Finds the index of the extremum value (minimum or maximum) in the list
      * from the start index.
      *
-     * @param studentSortList the list of paintingInfo objects
+     * @param artSortList the list of paintingInfo objects
      * @param startIndex the index to start searching from
      * @param isDesc specifies whether to find the maximum (true) or minimum
      * (false)
      * @return the index of the extremum value
      */
-    private int findExtremumIndex(List<paintingInfo> studentSortList, int startIndex, boolean isDesc) {
+    private int findExtremumIndex(List<paintingInfo> artSortList, int startIndex, boolean isDesc) {
         int extremumIndex = startIndex;
 
-        for (int j = startIndex + 1; j < studentSortList.size(); j++) {
-            if (shouldSwap(studentSortList.get(j).getArtId(), studentSortList.get(extremumIndex).getArtId(), isDesc)) {
+        for (int j = startIndex + 1; j < artSortList.size(); j++) {
+            if (shouldSwap(artSortList.get(j).getArtId(), artSortList.get(extremumIndex).getArtId(), isDesc)) {
                 extremumIndex = j;
             }
         }
@@ -65,14 +65,14 @@ public class sort {
      /**
      * Swaps two elements in the list.
      *
-     * @param studentSortList the list of paintingInfo objects
+     * @param artSortList the list of paintingInfo objects
      * @param i the index of the first element
      * @param j the index of the second element
      */
-    private void swap(List<paintingInfo> studentSortList, int i, int j) {
-        paintingInfo temp = studentSortList.get(i);
-        studentSortList.set(i, studentSortList.get(j));
-        studentSortList.set(j, temp);
+    private void swap(List<paintingInfo> artSortList, int i, int j) {
+        paintingInfo temp = artSortList.get(i);
+        artSortList.set(i, artSortList.get(j));
+        artSortList.set(j, temp);
     }
     
      public List<paintingInfo> sortByName(List<paintingInfo> unsortedData, boolean isDesc) {
