@@ -3,14 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.agm.model;
-
-
-
 /**
- *
- * @author Prasamsha 
+ * The GalleryModel class is model class for storing information about an artwork in 
+ * the list.
+ * It includes fields, constructors, and getter/setter methods to encapsulate the properties of the artwork.
+ * This class mostly uses encapsulate 
+ * @author Prasamsha
  */
-public class paintingInfo {
+public class GalleryModel {
+
     private int artId;
     private String name;
     private String date;
@@ -20,12 +21,11 @@ public class paintingInfo {
     private String address;
     private String formatt;
     private String size;
-    
 
-    public paintingInfo() {
+    public GalleryModel() {
     }
 
-    public paintingInfo(int artId, String name, String date, String medium, String contact, int price, String address, String formatt, String size) {
+    public GalleryModel(int artId, String name, String date, String medium, String contact, int price, String address, String formatt, String size) {
         this.artId = artId;
         this.name = name;
         this.date = date;
@@ -74,7 +74,7 @@ public class paintingInfo {
     }
 
     public void setContact(String contact) {
-       this.contact=contact; 
+        this.contact = contact;
     }
 
     public int getPrice() {

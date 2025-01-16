@@ -3,30 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.agm.controller.algorithms;
-
-import com.agm.model.paintingInfo;
+import com.agm.model.GalleryModel;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author Dell
+ * @author Prasamsha Singh 23048580 
+ * 
  */
-public class mergeSort {
-    public List<paintingInfo> mergeSortByPrice(List<paintingInfo> list, boolean isDesc) {
+public class MergeSort {
+    public List<GalleryModel> mergeSortByPrice(List<GalleryModel> list, boolean isDesc) {
         if (list.size() <= 1) {
             return list;
         }
 
         int mid = list.size() / 2;
-        List<paintingInfo> left = mergeSortByPrice(list.subList(0, mid), isDesc);
-        List<paintingInfo> right = mergeSortByPrice(list.subList(mid, list.size()), isDesc);
+        List<GalleryModel> left = mergeSortByPrice(list.subList(0, mid), isDesc);
+        List<GalleryModel> right = mergeSortByPrice(list.subList(mid, list.size()), isDesc);
 
         return merge(left, right, isDesc);
     }
 
-    private List<paintingInfo> merge(List<paintingInfo> left, List<paintingInfo> right, boolean isDesc) {
-        List<paintingInfo> result = new ArrayList<>();
+    private List<GalleryModel> merge(List<GalleryModel> left, List<GalleryModel> right, boolean isDesc) {
+        List<GalleryModel> result = new ArrayList<>();
         int i = 0, j = 0;
 
         while (i < left.size() && j < right.size()) {

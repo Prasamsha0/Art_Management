@@ -7,63 +7,101 @@ package com.agm.util;
 import java.util.regex.Pattern;
 
 /**
+ * This class contains methods to validate names, IDs, dates, contact numbers,
+ * prices, addresses, and sizes using regular expressions and the methods to
+ * ensure that no fields are left empty.
  *
- * @author Dell
+ * @author Prasamsha Singh
  */
-public class validationUtil {
-            /**
+public class ValidationUtil {
+
+    /**
      * the following code is used for validating the things entered by the admin
      */
-   
+
     private static final Pattern ART_ID_PATTERN = Pattern.compile("\\d{4}$");  // 4 digits only
     private static final Pattern NAME_PATTERN = Pattern.compile("^[a-zA-Z\\s]+$");  // Allow spaces in names
     private static final Pattern DATE_PATTERN = Pattern.compile("^[a-zA-Z0-9\\s.,-/]+$");
     private static final Pattern CONTACT_PATTERN = Pattern.compile("^98\\d{8}$");  // Contact format
-    private static final Pattern PRICE_PATTERN = Pattern.compile("^\\d+(\\.\\d{1,2})?$");  // Price format with optional $
+    private static final Pattern PRICE_PATTERN = Pattern.compile("^\\d+(\\.\\d{1,2})?$");  // Price format
     private static final Pattern ADDRESS_PATTERN = Pattern.compile("^[a-zA-Z0-9\\s.,-/]+$");  // Address format
     private static final Pattern SIZE_PATTERN = Pattern.compile("^\\d+ X \\d+$");  // Correct format for size
 
-    public static boolean isNullOrEmpty(String value) {
-        return value == null || value.trim().isEmpty();
+    /**
+     * method to check if the string is null or empty
+     * @param item string 
+     * @return true if the String is null or empty otherwise false 
+     */
+    public static boolean checkNullOrEmpty(String item) {
+        return item == null || item.trim().isEmpty();
+    }
+
+     /**
+     * ensures that the name entered contains only alphabets and is not empty
+     * @param name the name to validate
+     * @return true if the name is valid otherwise false 
+     */
+    public static boolean validateName(String name) {
+        return !checkNullOrEmpty(name) && NAME_PATTERN.matcher(name).matches();
+    }
+
+    /**
+     * Ensures that the ID entered contains exactly 4 numeric digits and is not empty.
+     * 
+     * @param artID the ID to validate
+     * @return true if the ID is valid, otherwise false
+     */
+    public static boolean validateID(String artID) {
+        return !checkNullOrEmpty(artID) && ART_ID_PATTERN.matcher(artID).matches();
+    }
+
+    /**
+     * Ensures that the date entered contains alphanumeric characters and allowed punctuation 
+     * (space, '.', ',', '-', '/'), and is not empty.
+     * 
+     * @param date the date to validate
+     * @return true if the date is valid otherwise false
+     */
+    public static boolean validateDate(String date) {
+        return !checkNullOrEmpty(date) && DATE_PATTERN.matcher(date).matches();
+    }
+
+     /**
+     * Ensures that the contact number starts with "98" and  has exactly 10 digits, and is not empty.
+     * @param contact the contact number to validate
+     * @return true if the contact is valid, otherwise false
+     */
+    public static boolean validateContact(String contact) {
+        return !checkNullOrEmpty(contact) && CONTACT_PATTERN.matcher(contact).matches();
     }
     
-    // validation to check whether name contains only alphabets and spaces
-    public static boolean ValidName(String name) {
-        return !isNullOrEmpty(name) && NAME_PATTERN.matcher(name).matches();
+    /**
+     * Ensures that the price entered is a numeric value with up to 2 decimal places and is not empty.
+     * 
+     * @param price the price to validate
+     * @return true if the price is valid otherwise false
+     */
+    public static boolean validatePrice(String price) {
+        return !checkNullOrEmpty(price) && PRICE_PATTERN.matcher(price).matches();
     }
 
-    // validation to check whether ID is four digits and not empty
-    public static boolean isValidId(String artID) {
-        return !isNullOrEmpty(artID) && ART_ID_PATTERN.matcher(artID).matches();
+    /**
+     * Ensures that the address entered contains alphanumeric characters and allowed punctuation 
+     * (space, '.', ',', '-', '/'), and is not empty.
+     * 
+     * @param address the address to validate
+     * @return true if the address is valid otherwise false
+     */
+    public static boolean validateAddress(String address) {
+        return !checkNullOrEmpty(address) && ADDRESS_PATTERN.matcher(address).matches();
     }
 
-    // validation to check whether date is in dd/mm/yyyy format and not empty
-    public static boolean isValidDate(String date) {
-        return !isNullOrEmpty(date) && DATE_PATTERN.matcher(date).matches();
-    }
-
-//    public static boolean ValidMedium(String medium) {
-//        return !isNullOrEmpty(medium) && MEDIUM_PATTERN.matcher(medium).matches();
-//    }
-
-    // validation to check whether contact starts from 98__, has 10 digits and not empty
-    public static boolean ValidContact(String contact) {
-        return !isNullOrEmpty(contact) && CONTACT_PATTERN.matcher(contact).matches();
-    }
-
-    public static boolean ValidPrice(String price) {
-        return !isNullOrEmpty(price) && PRICE_PATTERN.matcher(price).matches();
-    }
-    // validation to check whether price ends in number, ends with a currency and not empty
-    public static boolean ValidAddress(String address) {
-        return !isNullOrEmpty(address) && ADDRESS_PATTERN.matcher(address).matches();
-    }
-
-//    public static boolean ValidFormat(String format) {
-//        return !isNullOrEmpty(format) && FORMAT_PATTERN.matcher(format).matches();
-//    }
-// validation to check whether size is in height X width form and not empty
-    public static boolean ValidSize(String size) {
-        return !isNullOrEmpty(size) && SIZE_PATTERN.matcher(size).matches();
+     /**
+     * Ensures that the size is entered in "Height X Width" form. 
+     * @param size the size to validate
+     * @return true if the size is valid otherwise false
+     */
+    public static boolean validateSize(String size) {
+        return !checkNullOrEmpty(size) && SIZE_PATTERN.matcher(size).matches();
     }
 }

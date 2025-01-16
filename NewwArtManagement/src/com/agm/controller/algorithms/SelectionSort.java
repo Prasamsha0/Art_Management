@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
+/*
+The is the model class where is the base for most of the classes on this program. 
+*/
 package com.agm.controller.algorithms;
-import com.agm.model.paintingInfo;
+import com.agm.model.GalleryModel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +17,14 @@ import java.util.List;
  * 
  */
 
-public class sort {
-        List<paintingInfo> artItemList;
+public class SelectionSort {
+        List<GalleryModel> artItemList;
 
-    public sort(){
+    public SelectionSort(){
         artItemList = new ArrayList<>();
     }
     
-    public List<paintingInfo> sortById(List<paintingInfo> itemsList, boolean isDesc) {
+    public List<GalleryModel> sortById(List<GalleryModel> itemsList, boolean isDesc) {
         this.artItemList.clear();
         this.artItemList.addAll(itemsList);
         if (artItemList == null || artItemList.isEmpty()) {
@@ -44,13 +48,13 @@ public class sort {
      * Finds the index of the extremum value (minimum or maximum) in the list
      * from the start index.
      *
-     * @param artSortList the list of paintingInfo objects
+     * @param artSortList the list of GalleryModel objects
      * @param startIndex the index to start searching from
      * @param isDesc specifies whether to find the maximum (true) or minimum
      * (false)
      * @return the index of the extremum value
      */
-    private int findExtremumIndex(List<paintingInfo> artSortList, int startIndex, boolean isDesc) {
+    private int findExtremumIndex(List<GalleryModel> artSortList, int startIndex, boolean isDesc) {
         int extremumIndex = startIndex;
 
         for (int j = startIndex + 1; j < artSortList.size(); j++) {
@@ -64,43 +68,13 @@ public class sort {
 
      /**
      * Swaps two elements in the list.
-     *
-     * @param artSortList the list of paintingInfo objects
+     * @param artSortList the list of GalleryModel objects
      * @param i the index of the first element
      * @param j the index of the second element
      */
-    private void swap(List<paintingInfo> artSortList, int i, int j) {
-        paintingInfo temp = artSortList.get(i);
+    private void swap(List<GalleryModel> artSortList, int i, int j) {
+        GalleryModel temp = artSortList.get(i);
         artSortList.set(i, artSortList.get(j));
         artSortList.set(j, temp);
     }
-    
-     public List<paintingInfo> sortByName(List<paintingInfo> unsortedData, boolean isDesc) {
-        
-        List<paintingInfo> dataToSort = new ArrayList(); 
-        dataToSort.addAll(unsortedData);
-        
-        for (int i = 0; i < dataToSort.size() - 1; i++) {
-            //min value
-            int minIndex = i;
-            for (int j = i + 1; j < dataToSort.size(); j++) {
-                // compare and assign
-                if (isDesc) {
-                    if (dataToSort.get(j).getName().compareToIgnoreCase(dataToSort.get(minIndex).getName())>0 ) {
-                        minIndex = j;
-                    }
-                } else {
-                    if (dataToSort.get(j).getName().compareToIgnoreCase(dataToSort.get(minIndex).getName())<0) {
-                        minIndex = j;
-                    }
-                }
-            }
-            //swap
-            paintingInfo tempStudent = dataToSort.get(minIndex);
-            dataToSort.set(minIndex, dataToSort.get(i));
-            dataToSort.set(i, tempStudent);
-        }
-        return dataToSort;
-    }
-    
 }

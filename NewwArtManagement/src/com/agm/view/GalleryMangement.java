@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.agm.view;
-import com.agm.model.paintingInfo;
-import com.agm.util.validationUtil;
+
+import com.agm.model.GalleryModel;
+import com.agm.util.ValidationUtil;
 import java.awt.Color;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,66 +13,71 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import com.agm.controller.algorithms.sort;
-import com.agm.controller.algorithms.insertionSort;
-import com.agm.controller.algorithms.mergeSort;
-import java.util.ArrayList;
-import com.agm.controller.algorithms.binarySearch;
+import com.agm.controller.algorithms.SelectionSort;
+import com.agm.controller.algorithms.InsertionSort;
+import com.agm.controller.algorithms.MergeSort;
+import com.agm.controller.algorithms.BinarySearch;
 
 /**
+ * This is the GUI class where the main operation take place all the method in
+ * sorting classes, validation classes, and model class is implemented here
  *
- * @Prasamsha Singh 
- *  
+ * @Prasamsha Singh
+ *
  */
-public class AGM extends javax.swing.JFrame {
-    private List<paintingInfo> artItemList;
-    private java.awt.CardLayout cardLayout;
-    private final validationUtil validationUtil;
+public class GalleryMangement extends javax.swing.JFrame {
+
+    private List<GalleryModel> artItemList; //List which stores the artwork detail
+    private java.awt.CardLayout cardLayout;//A layput manager for switching between the screens
+    private final ValidationUtil validationUtil;//
     private final Color redColor = new Color(255, 51, 0);
     private final Color greenColour = new Color(35, 101, 51);
-    private final sort selectionSort;
-    private final insertionSort insertionSort;
-    private final mergeSort MergeSort;
-    
+    private final SelectionSort selectionSort; //declare selectionSort as a variable from the SelectionSort class
+    private final InsertionSort insertionSort;//declare ielectionSort as a variable from the InserttionSort class
+    private final MergeSort MergeSort;
 
     /**
-     * Creates new form AGM
+     * constructer of the GalleryMangement frame initializes components setting
+     * up necessary variables.
      */
-    public AGM() {
-        initComponents();
-        validationUtil = new validationUtil();
-        initializeLayout(); // Set up CardLayout and add screens
-        initializeData(); // Initialize student data and table
-        startProgress(); 
-        selectionSort = new sort();
-        insertionSort = new insertionSort();
-        MergeSort = new mergeSort();
-        // Set up CardLayout and add screens
-       // initializeData(); // Initialize student data and table
-        //startProgress();
+    public GalleryMangement() {
+        initComponents();//Initialize the components 
+        validationUtil = new ValidationUtil();
+        startApplication(); // Set up the CardLayout to switchbtween screens
+        initializeData(); // Initialize artwork detail into the table
+        startProgress();// Initialize the progress bar
+        selectionSort = new SelectionSort();// Initialize the SelectionSort algorithm
+        insertionSort = new InsertionSort();// Initialize the InsertionSort algorithm
+        MergeSort = new MergeSort();// Initialize the MergeSort algorithm
     }
-    
-    //Already existing values in the tables
-     private void initializeData() {
+
+    //load initial values into the tables 
+    private void initializeData() {
         artItemList = new LinkedList<>();
-        // Registering sample students
-        registerArtwork(new paintingInfo(0234, "Zenep Mali", "23/03/2024", "Watercolor", "9841489349", 53000, "Narnia Studio","Paper", "100 X 100"));
-        registerArtwork(new paintingInfo(3455, "Aliza Singh", "27/01/2024", "Acrylic", "9860997123", 12903, "Mantra Studio","Cloth", "1000 X 600"));
-        registerArtwork(new paintingInfo(1095, "Rio Cantos", "27/01/2024", "Acrylic", "9860997123", 3456453, "Narsim Studio","Cloth", "1000 X 600"));
-        registerArtwork(new paintingInfo(1008, "Lia Bhatta", "27/01/2024", "Acrylic", "9860997123", 100004, "Arctic Studio","Cloth", "1000 X 600"));
-        registerArtwork(new paintingInfo(2367, "Ria Lama", "27/01/2024", "Acrylic", "9860997123", 45673, "Himaliya Studio","Cloth", "1000 X 600"));
-        registerArtwork(new paintingInfo(3984, "Binu Adhikari", "27/01/2024", "Acrylic", "9860997123", 325433, "Ktm Art Studio","Cloth", "1000 X 600"));   
+        // entering new artwork detailk
+        addInitialArtwork(new GalleryModel(2234, "Zenep Mali", "23/02/2024", "Watercolor", "9841489349", 53000, "Narnia Studio", "Paper", "100 X 100"));
+        addInitialArtwork(new GalleryModel(3455, "Aliza Singh", "24/09/2004", "Acrylic", "9860997123", 12903, "Mantra Studio", "Cloth", "1000 X 600"));
+        addInitialArtwork(new GalleryModel(1095, "Rio Cantos", "12/05/2021", "Oil", "9860997123", 3456453, "Narsim Studio", "Glass", "1000 X 600"));
+        addInitialArtwork(new GalleryModel(1008, "Lia Bhatta", "4/11/2013", "Acrylic", "9860997123", 100004, "Arctic Studio", "Cloth", "1000 X 600"));
+        addInitialArtwork(new GalleryModel(2367, "Ria Lama", "30/03/2018", "Charcoal", "9860997123", 45673, "Himaliya Studio", "Glass", "1000 X 600"));
+        addInitialArtwork(new GalleryModel(3984, "Binu Adhikari", "7/12/2020", "Acrylic", "9860997123", 325433, "Ktm Art Studio", "Cloth", "1000 X 600"));
     }
-     
-    private void registerArtwork(paintingInfo items) {
-        artItemList.add(items);
-        DefaultTableModel model = (DefaultTableModel) mntable.getModel();
-        model.addRow(new Object[]{
-            items.getArtId(), items.getName(), items.getDate(), items.getMedium(), items.getContact(), items.getPrice(),items.getAddress(),   items.getFormatt()
-           ,items.getSize()
+
+    /**
+     * Adds artwork data to the table and the list.
+     *
+     * @param newArtItems the GalleryModel object containing artwork details to
+     * be added.
+     */
+    private void addInitialArtwork(GalleryModel initialItems) {
+        artItemList.add(initialItems);
+        DefaultTableModel initialArtwork = (DefaultTableModel) mntable.getModel();
+        initialArtwork.addRow(new Object[]{
+            initialItems.getArtId(), initialItems.getName(), initialItems.getDate(), initialItems.getMedium(), initialItems.getContact(), initialItems.getPrice(), initialItems.getAddress(), initialItems.getFormatt(),
+            initialItems.getSize()
         });
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,17 +100,17 @@ public class AGM extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         mnPanel = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        mnTabPane = new javax.swing.JTabbedPane();
         mnHome = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
+        mnHomePanelScroll = new javax.swing.JPanel();
+        mnHmainImg = new javax.swing.JLabel();
+        mnHTraditionalImg = new javax.swing.JLabel();
+        mnHAbstractArtImg = new javax.swing.JLabel();
+        mnHModernArtImg = new javax.swing.JLabel();
+        mnHTraditionalLbl = new javax.swing.JLabel();
+        mnHAbstractArtLbl = new javax.swing.JLabel();
+        mnHModernArtLbl = new javax.swing.JLabel();
         mnLineimg1 = new javax.swing.JLabel();
         mnLineimg2 = new javax.swing.JLabel();
         mnLineimg3 = new javax.swing.JLabel();
@@ -112,6 +118,7 @@ public class AGM extends javax.swing.JFrame {
         mnDescrition = new javax.swing.JLabel();
         mnHTitle2 = new javax.swing.JLabel();
         mnHTitle1 = new javax.swing.JLabel();
+        mnLogoutBtn = new javax.swing.JButton();
         mnGallery = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel5 = new javax.swing.JPanel();
@@ -279,11 +286,11 @@ public class AGM extends javax.swing.JFrame {
         mnPanel.setPreferredSize(new java.awt.Dimension(1200, 700));
         mnPanel.setLayout(null);
 
-        jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
-        jTabbedPane2.setDoubleBuffered(true);
-        jTabbedPane2.setMaximumSize(new java.awt.Dimension(1000, 600));
-        jTabbedPane2.setMinimumSize(new java.awt.Dimension(1000, 600));
-        jTabbedPane2.setPreferredSize(new java.awt.Dimension(1000, 600));
+        mnTabPane.setBackground(new java.awt.Color(255, 255, 255));
+        mnTabPane.setDoubleBuffered(true);
+        mnTabPane.setMaximumSize(new java.awt.Dimension(1000, 600));
+        mnTabPane.setMinimumSize(new java.awt.Dimension(1000, 600));
+        mnTabPane.setPreferredSize(new java.awt.Dimension(1000, 600));
 
         mnHome.setBackground(new java.awt.Color(247, 247, 249));
         mnHome.setMaximumSize(new java.awt.Dimension(1000, 500));
@@ -297,54 +304,54 @@ public class AGM extends javax.swing.JFrame {
         jScrollPane3.setMinimumSize(new java.awt.Dimension(1200, 700));
         jScrollPane3.setPreferredSize(new java.awt.Dimension(1200, 700));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setFocusTraversalPolicyProvider(true);
-        jPanel3.setMinimumSize(new java.awt.Dimension(1200, 700));
-        jPanel3.setPreferredSize(new java.awt.Dimension(1200, 849));
-        jPanel3.setLayout(null);
+        mnHomePanelScroll.setBackground(new java.awt.Color(255, 255, 255));
+        mnHomePanelScroll.setFocusTraversalPolicyProvider(true);
+        mnHomePanelScroll.setMinimumSize(new java.awt.Dimension(1200, 700));
+        mnHomePanelScroll.setPreferredSize(new java.awt.Dimension(1200, 900));
+        mnHomePanelScroll.setLayout(null);
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/home screen.png"))); // NOI18N
-        jPanel3.add(jLabel16);
-        jLabel16.setBounds(0, -10, 532, 470);
+        mnHmainImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/home screen.png"))); // NOI18N
+        mnHomePanelScroll.add(mnHmainImg);
+        mnHmainImg.setBounds(2, -10, 550, 470);
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/DSC_6186 1.png"))); // NOI18N
-        jPanel3.add(jLabel13);
-        jLabel13.setBounds(30, 580, 304, 219);
+        mnHTraditionalImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/DSC_6186 1.png"))); // NOI18N
+        mnHomePanelScroll.add(mnHTraditionalImg);
+        mnHTraditionalImg.setBounds(60, 570, 304, 219);
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Pagoda 1.png"))); // NOI18N
-        jPanel3.add(jLabel15);
-        jLabel15.setBounds(370, 570, 307, 219);
+        mnHAbstractArtImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Pagoda 1.png"))); // NOI18N
+        mnHomePanelScroll.add(mnHAbstractArtImg);
+        mnHAbstractArtImg.setBounds(430, 560, 307, 230);
 
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Willian Santiago 1.png"))); // NOI18N
-        jPanel3.add(jLabel20);
-        jLabel20.setBounds(770, 570, 306, 219);
+        mnHModernArtImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Willian Santiago 1.png"))); // NOI18N
+        mnHomePanelScroll.add(mnHModernArtImg);
+        mnHModernArtImg.setBounds(810, 570, 306, 219);
 
-        jLabel30.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel30.setText("Traditional Art");
-        jPanel3.add(jLabel30);
-        jLabel30.setBounds(30, 490, 100, 20);
+        mnHTraditionalLbl.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        mnHTraditionalLbl.setText("Traditional Art");
+        mnHomePanelScroll.add(mnHTraditionalLbl);
+        mnHTraditionalLbl.setBounds(60, 500, 100, 20);
 
-        jLabel31.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel31.setText("Modern Art");
-        jPanel3.add(jLabel31);
-        jLabel31.setBounds(770, 490, 79, 20);
+        mnHAbstractArtLbl.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        mnHAbstractArtLbl.setText("Abstract Art");
+        mnHomePanelScroll.add(mnHAbstractArtLbl);
+        mnHAbstractArtLbl.setBounds(430, 490, 82, 20);
 
-        jLabel32.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
-        jLabel32.setText("Abstract Art");
-        jPanel3.add(jLabel32);
-        jLabel32.setBounds(380, 490, 82, 20);
+        mnHModernArtLbl.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        mnHModernArtLbl.setText("Modern Art");
+        mnHomePanelScroll.add(mnHModernArtLbl);
+        mnHModernArtLbl.setBounds(810, 490, 79, 20);
 
         mnLineimg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
-        jPanel3.add(mnLineimg1);
-        mnLineimg1.setBounds(30, 530, 304, 27);
+        mnHomePanelScroll.add(mnLineimg1);
+        mnLineimg1.setBounds(60, 530, 304, 27);
 
         mnLineimg2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
-        jPanel3.add(mnLineimg2);
-        mnLineimg2.setBounds(380, 530, 299, 27);
+        mnHomePanelScroll.add(mnLineimg2);
+        mnLineimg2.setBounds(430, 530, 299, 27);
 
         mnLineimg3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Line 1.png"))); // NOI18N
-        jPanel3.add(mnLineimg3);
-        mnLineimg3.setBounds(770, 530, 306, 27);
+        mnHomePanelScroll.add(mnLineimg3);
+        mnLineimg3.setBounds(810, 530, 306, 27);
 
         mnHDescriptionPanel.setBackground(new java.awt.Color(247, 245, 243));
         mnHDescriptionPanel.setLayout(null);
@@ -364,15 +371,24 @@ public class AGM extends javax.swing.JFrame {
         mnHDescriptionPanel.add(mnHTitle1);
         mnHTitle1.setBounds(80, 40, 350, 61);
 
-        jPanel3.add(mnHDescriptionPanel);
-        mnHDescriptionPanel.setBounds(530, 0, 660, 450);
+        mnHomePanelScroll.add(mnHDescriptionPanel);
+        mnHDescriptionPanel.setBounds(530, 0, 670, 450);
 
-        jScrollPane3.setViewportView(jPanel3);
+        mnLogoutBtn.setText("Back to Login");
+        mnLogoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnLogoutBtnActionPerformed(evt);
+            }
+        });
+        mnHomePanelScroll.add(mnLogoutBtn);
+        mnLogoutBtn.setBounds(980, 800, 140, 23);
+
+        jScrollPane3.setViewportView(mnHomePanelScroll);
 
         mnHome.add(jScrollPane3);
         jScrollPane3.setBounds(0, 0, 1200, 700);
 
-        jTabbedPane2.addTab("home", mnHome);
+        mnTabPane.addTab("home", mnHome);
 
         mnGallery.setBackground(new java.awt.Color(247, 247, 249));
         mnGallery.setForeground(new java.awt.Color(255, 255, 255));
@@ -435,7 +451,7 @@ public class AGM extends javax.swing.JFrame {
         jPanel5.add(mnSearchtxt);
         mnSearchtxt.setBounds(590, 60, 160, 30);
 
-        mnADComboBox.setBackground(new java.awt.Color(165, 135, 99));
+        mnADComboBox.setBackground(new java.awt.Color(255, 153, 51));
         mnADComboBox.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         mnADComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "lowest to higest", "highest to lowest" }));
         mnADComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -712,7 +728,7 @@ public class AGM extends javax.swing.JFrame {
         mnGallery.add(jScrollPane1);
         jScrollPane1.setBounds(0, 0, 1200, 700);
 
-        jTabbedPane2.addTab("items list", mnGallery);
+        mnTabPane.addTab("items list", mnGallery);
 
         mnAddArt.setBackground(new java.awt.Color(193, 227, 254));
         mnAddArt.setLayout(null);
@@ -733,12 +749,12 @@ public class AGM extends javax.swing.JFrame {
             }
         });
         jPanel2.add(mnSizetxt);
-        mnSizetxt.setBounds(30, 360, 211, 40);
+        mnSizetxt.setBounds(30, 340, 211, 40);
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel8.setText("Size");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(40, 320, 130, 20);
+        jLabel8.setBounds(30, 300, 130, 20);
 
         mnFormattxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnFormattxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Paper", "Cloth", "Glass" }));
@@ -749,17 +765,17 @@ public class AGM extends javax.swing.JFrame {
             }
         });
         jPanel2.add(mnFormattxt);
-        mnFormattxt.setBounds(271, 354, 159, 40);
+        mnFormattxt.setBounds(280, 340, 159, 40);
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel5.setText("Format");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(280, 310, 90, 20);
+        jLabel5.setBounds(280, 300, 90, 20);
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel9.setText("Meduim");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(460, 310, 100, 20);
+        jLabel9.setBounds(470, 300, 100, 20);
 
         mnMeduimtxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnMeduimtxt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acrylic", "Watercolor", "Oil", "Charcoal" }));
@@ -771,9 +787,9 @@ public class AGM extends javax.swing.JFrame {
             }
         });
         jPanel2.add(mnMeduimtxt);
-        mnMeduimtxt.setBounds(460, 350, 167, 40);
+        mnMeduimtxt.setBounds(470, 340, 167, 40);
         jPanel2.add(contactError);
-        contactError.setBounds(500, 244, 182, 20);
+        contactError.setBounds(482, 244, 220, 40);
 
         mnContacttxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         mnContacttxt.setText("9812345678");
@@ -940,7 +956,7 @@ public class AGM extends javax.swing.JFrame {
         mnAddArt.add(jLabel18);
         jLabel18.setBounds(3, 0, 460, 670);
 
-        jTabbedPane2.addTab("add art ", mnAddArt);
+        mnTabPane.addTab("add art ", mnAddArt);
 
         mnFeatured.setBackground(new java.awt.Color(255, 255, 255));
         mnFeatured.setMaximumSize(new java.awt.Dimension(1000, 600));
@@ -968,7 +984,7 @@ public class AGM extends javax.swing.JFrame {
         mnFeatured.add(jLabel14);
         jLabel14.setBounds(620, -10, 560, 300);
 
-        jTabbedPane2.addTab("featured", mnFeatured);
+        mnTabPane.addTab("featured", mnFeatured);
 
         mnAboutus.setBackground(new java.awt.Color(255, 255, 255));
         mnAboutus.setFocusTraversalPolicyProvider(true);
@@ -1017,10 +1033,10 @@ public class AGM extends javax.swing.JFrame {
         mnAboutus.add(jLabel12);
         jLabel12.setBounds(40, 70, 690, 440);
 
-        jTabbedPane2.addTab("about us", mnAboutus);
+        mnTabPane.addTab("about us", mnAboutus);
 
-        mnPanel.add(jTabbedPane2);
-        jTabbedPane2.setBounds(0, 0, 1200, 700);
+        mnPanel.add(mnTabPane);
+        mnTabPane.setBounds(0, 0, 1200, 700);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 700));
@@ -1041,16 +1057,19 @@ public class AGM extends javax.swing.JFrame {
         imgLS.setPreferredSize(new java.awt.Dimension(1000, 600));
         imgLS.setRequestFocusEnabled(false);
         pnLoaddingscreen.add(imgLS);
-        imgLS.setBounds(10, 0, 1200, 700);
+        imgLS.setBounds(0, 0, 1200, 700);
 
         getContentPane().add(pnLoaddingscreen);
         pnLoaddingscreen.setBounds(0, 0, 0, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    //initialzing layout to ensure the loading screen apprears first
-    private void initializeLayout() {
+
+    /**
+     * Sets up the layout for the application using CardLayout. Made to switch
+     * between screens Makes sure the loading screen appears first
+     */
+    private void startApplication() {
         cardLayout = new java.awt.CardLayout();
         getContentPane().setLayout(cardLayout);
         // Add panels with unique identifiers
@@ -1060,17 +1079,18 @@ public class AGM extends javax.swing.JFrame {
         // Start with the loading screen
         loadScreen("LoadingScreen");
     }
-    
 
-    
-    //makes the scroll bar load
+    /**
+     * Starts the progress bar animation on the loading screen. Makes the
+     * progress bar animation load on the loading screen.
+     */
     private void startProgress() {
         javax.swing.SwingWorker<Void, Integer> worker = new javax.swing.SwingWorker<>() {
             @Override
             protected Void doInBackground() throws Exception {
                 for (int i = 0; i <= 100; i++) {
                     Thread.sleep(30); // Simulated delay for progress bar
-                    publish(i); // Publish progress
+                    publish(i); // Publish progress to the UI
                 }
                 return null;
             }
@@ -1088,17 +1108,20 @@ public class AGM extends javax.swing.JFrame {
         };
         worker.execute(); // Start the worker thread
     }
-    
-    private void loadScreen(String screenName) {
-        cardLayout.show(getContentPane(), screenName);
+
+    /**
+     * Used to change between screens
+     *
+     * @param changeScreenTo to change the panels
+     */
+    private void loadScreen(String changeScreenTo) {
+        cardLayout.show(getContentPane(), changeScreenTo);
     }
-    
+
     private void lgusernametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lgusernametxtActionPerformed
-        // TODO add your handling code here:
-                // TODO add your handling code here:
-        // Get the username and password input
+
     }//GEN-LAST:event_lgusernametxtActionPerformed
-     
+
     private void lgpasswordtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lgpasswordtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lgpasswordtxtActionPerformed
@@ -1111,23 +1134,16 @@ public class AGM extends javax.swing.JFrame {
         // incase username is empty  
         if (username.isEmpty()) {
             lgUsernamError.setText("Please enter your username");
-        }
-        // incase password is empty
-        else if(password.isEmpty()){
+        } // incase password is empty
+        else if (password.isEmpty()) {
             lgPasswordError.setText("Please enter your password.");
-        }
-         
-        //incase  username and password are incorrect
+        } //incase  username and password are incorrect
         else if (!username.equals("p")) {
             lgUsernamError.setText("Username incorrect");
-        } 
-        
-        //check if password is incorrect
+        } //check if password is incorrect
         else if (!password.equals("z")) {
             lgPasswordError.setText("password incorrect.");
-        } 
-           
-        // proceeds to main screen if the criteria is met
+        } // proceeds to main screen if the criteria is met
         else {
             lgUsernamError.setText(""); // Clear any previous error messages
             lgPasswordError.setText(""); // Clear any previous error messages
@@ -1135,27 +1151,27 @@ public class AGM extends javax.swing.JFrame {
             loadScreen("MainScreen"); // Load the main screen
         }
     }//GEN-LAST:event_lgbuttonActionPerformed
-    private boolean validateArtwork(JTextField txtField, JLabel errorLbl, String errorMsg, Color redColor, Color successColor, boolean isValidFormat) {
-    if (validationUtil.isNullOrEmpty(txtField.getText())) {
-        txtField.setBorder(createBorder(redColor));  // Changed to use createBorder
-        errorLbl.setText("Field cannot be empty!");
-        errorLbl.setVisible(true);
-        return false;
-    } else if (!isValidFormat) {
-        txtField.setBorder(createBorder(redColor));  // Changed to use createBorder
-        errorLbl.setText(errorMsg);
-        errorLbl.setVisible(true);
-        return false;
-    } else {
-        txtField.setBorder(createBorder(successColor));  // Changed to use createBorder
-        errorLbl.setVisible(false);
-        return true;
-    }
-}
 
-    
+    private boolean validateArtwork(JTextField txtField, JLabel errorLbl, String errorMsg, Color redColor, Color greenColor, boolean isValidFormat) {
+        if (ValidationUtil.checkNullOrEmpty(txtField.getText())) {
+            txtField.setBorder(createBorder(redColor));  // Changed to use createBorder
+            errorLbl.setText("Field cannot be empty!");
+            errorLbl.setVisible(true);
+            return false;
+        } else if (!isValidFormat) {
+            txtField.setBorder(createBorder(redColor));  // Changed to use createBorder
+            errorLbl.setText(errorMsg);
+            errorLbl.setVisible(true);
+            return false;
+        } else {
+            txtField.setBorder(createBorder(greenColor));  // Changed to use createBorder
+            errorLbl.setVisible(false);
+            return true;
+        }
+    }
+
     private javax.swing.border.Border createBorder(Color color) {
-    return javax.swing.BorderFactory.createLineBorder(color, 2);
+        return javax.swing.BorderFactory.createLineBorder(color, 2);
     }
 
     private void showDialogBox(String message, String title, int messageType) {
@@ -1164,214 +1180,258 @@ public class AGM extends javax.swing.JFrame {
 
 
     private void mnAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnAddButtonActionPerformed
-    // TODO add your handling code here:
-    boolean noError = true;
-
-    // Validate Name
-    noError &= validateArtwork(
-            mnNametxt, nameError, "must be in alphabets.",
-            redColor, greenColour, validationUtil.ValidName(mnNametxt.getText())
-    );
-    // Validate ID
-    noError &= validateArtwork(
-            mnIDtxt,  idError, "must be 4 digits.",
-            redColor, greenColour, validationUtil.isValidId(mnIDtxt.getText())
-    );
-    // Validate Date
-    noError &= validateArtwork(
-            mnDatetxt,  dateError, "Enter the correct format.",
-            redColor, greenColour, validationUtil.isValidDate(mnDatetxt.getText())
-    );
-    // Validate contact
-    noError &= validateArtwork(
-            mnContacttxt,  contactError, "Must start from 98 and be 10 digits.",
-            redColor, greenColour, validationUtil.ValidContact(mnContacttxt.getText())
-    );
-    // Validate price
-    noError &= validateArtwork(
-            mnPricetxt,  priceError, "must be in digits.",
-            redColor, greenColour, validationUtil.ValidPrice(mnPricetxt.getText())
-    );
-    // Validate address
-    noError &= validateArtwork(
-            mnStudioAddresstxt,  addressError, "must be in alphabets.",
-            redColor, greenColour, validationUtil.ValidAddress(mnStudioAddresstxt.getText())
-    );
-    // Validate size
-    noError &= validateArtwork(
-            mnSizetxt,  sizeError, "must be in height X width form.",
-            redColor, greenColour, validationUtil.ValidSize(mnSizetxt.getText())
-    );
-
-    // If no errors, collect data for adding to table
-    if (noError) {
-        // Prepare data for the table
-        // Retrieve values from combo boxes
-        // Use these values in your logic
-        paintingInfo items = new paintingInfo(
-            Integer.parseInt(mnIDtxt.getText().trim()),
-            mnNametxt.getText().trim(),
-            mnDatetxt.getText().trim(),
-            mnMeduimtxt.getSelectedItem().toString().trim(),
-            mnContacttxt.getText().trim(),
-            Integer.parseInt(mnPricetxt.getText().trim()),
-            mnStudioAddresstxt.getText().trim(),
-            mnFormattxt.getSelectedItem().toString().trim(),
-            mnSizetxt.getText().trim()
-        );
-
-        if (checkDuplicateID(items)) {
-            // Add the student if no duplicate is found
-            mnIDtxt.setBorder(createBorder(redColor));  // Changed to use createBorder
-            JOptionPane.showMessageDialog(this, "ID already exists", "ID Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            artItemList.add(items);
-            addArtwork(artItemList);
-            mnIDtxt.setBorder(createBorder(greenColour));  // Changed to use createBorder
-            mnNametxt.setText("");
-            mnIDtxt.setText("");
-            mnDatetxt.setText("");
-            mnContacttxt.setText("");
-            mnPricetxt.setText("");
-            mnStudioAddresstxt.setText("");
-            mnSizetxt.setText("");
-            mnMeduimtxt.setSelectedIndex(0);
-            mnFormattxt.setSelectedIndex(0);
-            showDialogBox("Art Item added.", "task successful", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }    
-
-
-    }//GEN-LAST:event_mnAddButtonActionPerformed
-    
-    //adds items to table
-    private void addArtwork(List<paintingInfo> itemsList) {
-        DefaultTableModel model = (DefaultTableModel) mntable.getModel();
-
-        // Clear existing rows if needed
-        model.setRowCount(0);
-
-        // Populate the table with student data
-        itemsList.forEach(item -> model.addRow(new Object[]{
-              item.getArtId(), item.getName(), item.getDate(), item.getMedium(), item.getContact(), item.getPrice()
-              , item.getAddress(), item.getFormatt(), item.getSize()
-        }));
-    }
-    
-    private boolean checkDuplicateID(paintingInfo item) {
-        return artItemList.stream()
-                .anyMatch(existingArtItem
-                        -> existingArtItem.getArtId() == item.getArtId());
-    }
-
-    private boolean updateArtwork(paintingInfo updatedItem) {
-    for (int i = 0; i < artItemList.size(); i++) {
-        if (artItemList.get(i).getArtId() == updatedItem.getArtId()) {
-            artItemList.set(i, updatedItem); // Update the existing item
-            return true;
-        }
-    }
-    return false; // No matching ID found
-}
-
-    private void mnUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUpdateButtonActionPerformed
-        
-            // TODO add your handling code here:
+        // TODO add your handling code here:
         boolean noError = true;
 
         // Validate Name
         noError &= validateArtwork(
                 mnNametxt, nameError, "must be in alphabets.",
-                redColor, greenColour, validationUtil.ValidName(mnNametxt.getText())
+                redColor, greenColour, validationUtil.validateName(mnNametxt.getText())
         );
         // Validate ID
         noError &= validateArtwork(
-                mnIDtxt,  idError, "must be 4 digits.",
-                redColor, greenColour, validationUtil.isValidId(mnIDtxt.getText())
+                mnIDtxt, idError, "must be 4 digits.",
+                redColor, greenColour, validationUtil.validateID(mnIDtxt.getText())
         );
         // Validate Date
         noError &= validateArtwork(
-                mnDatetxt,  dateError, "Enter the correct format.",
-                redColor, greenColour, validationUtil.isValidDate(mnDatetxt.getText())
+                mnDatetxt, dateError, "Enter the correct format.",
+                redColor, greenColour, validationUtil.validateDate(mnDatetxt.getText())
         );
         // Validate contact
         noError &= validateArtwork(
-                mnContacttxt,  contactError, "Must start from 98 and be 10 digits.",
-                redColor, greenColour, validationUtil.ValidContact(mnContacttxt.getText())
+                mnContacttxt, contactError, "Must start from 98 and be 10 digits.",
+                redColor, greenColour, validationUtil.validateContact(mnContacttxt.getText())
         );
         // Validate price
         noError &= validateArtwork(
-                mnPricetxt,  priceError, "must be in digits.",
-                redColor, greenColour, validationUtil.ValidPrice(mnPricetxt.getText())
+                mnPricetxt, priceError, "must be in digits.",
+                redColor, greenColour, validationUtil.validatePrice(mnPricetxt.getText())
         );
         // Validate address
         noError &= validateArtwork(
-                mnStudioAddresstxt,  addressError, "must be in alphabets.",
-                redColor, greenColour, validationUtil.ValidAddress(mnStudioAddresstxt.getText())
+                mnStudioAddresstxt, addressError, "must be in alphabets.",
+                redColor, greenColour, validationUtil.validateAddress(mnStudioAddresstxt.getText())
         );
         // Validate size
         noError &= validateArtwork(
-                mnSizetxt,  sizeError, "must be in height X width form.",
-                redColor, greenColour, validationUtil.ValidSize(mnSizetxt.getText())
-        );
-        // add to table is no errors
-        if(noError){
-            paintingInfo updatedItem = new paintingInfo(
-            Integer.parseInt(mnIDtxt.getText().trim()), // Updated ID
-            mnNametxt.getText().trim(),                 // Updated Name
-            mnDatetxt.getText().trim(),                 // Updated Date
-            mnMeduimtxt.getSelectedItem().toString().trim(), // Updated Medium
-            mnContacttxt.getText().trim(),              // Updated Contact
-            Integer.parseInt(mnPricetxt.getText().trim()), // Updated Price
-            mnStudioAddresstxt.getText().trim(),       // Updated Address
-            mnFormattxt.getSelectedItem().toString().trim(), // Updated Format
-            mnSizetxt.getText().trim()                 // Updated Size
+                mnSizetxt, sizeError, "must be in height X width form.",
+                redColor, greenColour, validationUtil.validateSize(mnSizetxt.getText())
         );
 
+        // If no errors, collect data for adding to table
+        if (noError) {
+            // Prepare data for the table
+            // Retrieve values from combo boxes
+            // Use these values in your logic
+            GalleryModel items = new GalleryModel(
+                    Integer.parseInt(mnIDtxt.getText().trim()),
+                    mnNametxt.getText().trim(),
+                    mnDatetxt.getText().trim(),
+                    mnMeduimtxt.getSelectedItem().toString().trim(),
+                    mnContacttxt.getText().trim(),
+                    Integer.parseInt(mnPricetxt.getText().trim()),
+                    mnStudioAddresstxt.getText().trim(),
+                    mnFormattxt.getSelectedItem().toString().trim(),
+                    mnSizetxt.getText().trim()
+            );
 
-        // If the item was updated, show a success message
-            if (updateArtwork(updatedItem)) {
-            addArtwork(artItemList);  // Refresh the table
-            showDialogBox("Art Item updated successfully.", "Task successful", JOptionPane.INFORMATION_MESSAGE);
-            resetFormFields(); 
-                }
-            else {
-            // If no item was updated (ID not found), show an error message
-            showDialogBox("Art Item with this ID not found.", "Error", JOptionPane.ERROR_MESSAGE);
+            if (duplicateartID(items)) {
+                // Add the student if no duplicate is found
+                mnIDtxt.setBorder(createBorder(redColor));  // Changed to use createBorder
+                showDialogBox("ID already exists", "ID Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                artItemList.add(items);
+                addArtwork(artItemList);
+                mnIDtxt.setBorder(createBorder(greenColour));  // Changed to use createBorder
+                mnNametxt.setText("");
+                mnIDtxt.setText("");
+                mnDatetxt.setText("");
+                mnContacttxt.setText("");
+                mnPricetxt.setText("");
+                mnStudioAddresstxt.setText("");
+                mnSizetxt.setText("");
+                mnMeduimtxt.setSelectedIndex(0);
+                mnFormattxt.setSelectedIndex(0);
+                showDialogBox("Art Item added.", "task successful", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
-     }
+
+
+    }//GEN-LAST:event_mnAddButtonActionPerformed
+
+    /**
+     * Updates the JTable mnTable with artwork details list.
+     *
+     * @param itemsList the list of GalleryModel objects containing the artwork
+     * details
+     */
+    private void addArtwork(List<GalleryModel> itemsList) {
+        DefaultTableModel model = (DefaultTableModel) mntable.getModel();
+
+        // Clear existing rows if needed
+        model.setRowCount(0);
+
+        // Populate the table with artwork data
+        itemsList.forEach(item -> model.addRow(new Object[]{
+            item.getArtId(), //ID of the artwork
+            item.getName(), //Name of the artist
+            item.getDate(), //Date of the artwork
+            item.getMedium(), //medium of the art
+            item.getContact(), //Studio contaact
+            item.getPrice(),//price of the artwork
+            item.getAddress(), //studio address
+            item.getFormatt(), //format of the artwork
+            item.getSize()//size of the artwork
+        }));
+    }
+
+    /**
+     * Checks if an artwork with the same ID already exists in the list.
+     *
+     * @param item the GalleryModel object to check for duplication
+     * @return true if an artwork with the same ID exists,otherwise false
+     */
+    private boolean duplicateartID(GalleryModel item) {
+        return artItemList.stream()
+                .anyMatch(existingArtItem
+                        -> existingArtItem.getArtId() == item.getArtId());
+    }
+
+    /**
+     * Searches for an artwork by ID and updates its details if found.
+     *
+     * @param updatedItem the GalleryModel object containing updated artwork
+     * details
+     * @return true if the artwork with the given ID exists and was updated,
+     * false otherwise
+     */
+    private boolean idExists(GalleryModel updatedItem) {
+        for (int i = 0; i < artItemList.size(); i++) {
+            if (artItemList.get(i).getArtId() == updatedItem.getArtId()) {
+                artItemList.set(i, updatedItem); // Update the existing item
+                return true;
+            }
+        }
+        return false; // No matching ID found
+    }
+
+    private void updateTable(List<GalleryModel> sortedList) {
+        DefaultTableModel model = (DefaultTableModel) mntable.getModel();
+        model.setRowCount(0); // Clear the table
+        for (GalleryModel art : sortedList) {
+            model.addRow(new Object[]{art.getArtId(), art.getName(), art.getDate(), art.getMedium(), art.getContact(), art.getPrice(), art.getAddress(), art.getFormatt(),
+                art.getSize()});
+        }
+    }
+
+    /**
+     * Handles the "Update " button action event.
+     * Validates the input fields, updates the artwork details if the ID exists,
+     * and refreshes the table which shows the modified values. Displays 
+     * success or error messages.
+     *
+     * @param evt the ActionEvent triggered by clicking the "update" button
+     */
+    private void mnUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUpdateButtonActionPerformed
+
+        // TODO add your handling code here:
+        boolean noError = true;
+
+        // Validate Name
+        noError &= validateArtwork(
+                mnNametxt, nameError, "must be in alphabets.",
+                redColor, greenColour, ValidationUtil.validateName(mnNametxt.getText())
+        );
+        // Validate ID
+        noError &= validateArtwork(
+                mnIDtxt, idError, "must be 4 digits.",
+                redColor, greenColour, ValidationUtil.validateID(mnIDtxt.getText())
+        );
+        // Validate Date
+        noError &= validateArtwork(
+                mnDatetxt, dateError, "Enter the correct format.",
+                redColor, greenColour, ValidationUtil.validateDate(mnDatetxt.getText())
+        );
+        // Validate contact
+        noError &= validateArtwork(
+                mnContacttxt, contactError, "Must start from 98 and be 10 digits.",
+                redColor, greenColour, ValidationUtil.validateContact(mnContacttxt.getText())
+        );
+        // Validate price
+        noError &= validateArtwork(
+                mnPricetxt, priceError, "must be in digits.",
+                redColor, greenColour, ValidationUtil.validatePrice(mnPricetxt.getText())
+        );
+        // Validate address
+        noError &= validateArtwork(
+                mnStudioAddresstxt, addressError, "must be in alphabets.",
+                redColor, greenColour, ValidationUtil.validateAddress(mnStudioAddresstxt.getText())
+        );
+        // Validate size
+        noError &= validateArtwork(
+                mnSizetxt, sizeError, "must be in height X width form.",
+                redColor, greenColour, ValidationUtil.validateSize(mnSizetxt.getText())
+        );
+
+        // add to table is no errors
+        if (noError) {
+            GalleryModel updatedItem = new GalleryModel(
+                    Integer.parseInt(mnIDtxt.getText().trim()), // Updated ID
+                    mnNametxt.getText().trim(), // Updated Name
+                    mnDatetxt.getText().trim(), // Updated Date
+                    mnMeduimtxt.getSelectedItem().toString().trim(), // Updated Medium
+                    mnContacttxt.getText().trim(), // Updated Contact
+                    Integer.parseInt(mnPricetxt.getText().trim()), // Updated Price
+                    mnStudioAddresstxt.getText().trim(), // Updated Address
+                    mnFormattxt.getSelectedItem().toString().trim(), // Updated Format
+                    mnSizetxt.getText().trim() // Updated Size
+            );
+
+            // If the item was updated, show a success message
+            if (idExists(updatedItem)) {
+                addArtwork(artItemList);  // Refresh the table
+                showDialogBox("Art Item updated successfully.", "Task successful", JOptionPane.INFORMATION_MESSAGE);
+                resetFormFields();
+            } else {
+                // If no item was updated (ID not found), show an error message
+                mnIDtxt.setBorder(createBorder(redColor));
+                showDialogBox("Art Item not found.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
 
     }//GEN-LAST:event_mnUpdateButtonActionPerformed
 
 
     private void mnDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnDeleteButtonActionPerformed
-    // Get the value from the ID text field
-    String idText = mnIDtxt.getText().trim();
+        // Get the value from the ID text field
+        String idText = mnIDtxt.getText().trim();
 
-    if (validationUtil.isNullOrEmpty(idText)) {
-        validateArtwork(
-                mnIDtxt, idError, "Enter ID.",
-                redColor, greenColour, validationUtil.isValidId(idText)
-        );
-        return;
-    }
-
-    try {
-        int idToDelete = Integer.parseInt(idText);
-
-        // Use removeIf for safe removal
-        boolean isDeleted = artItemList.removeIf(item -> item.getArtId() == idToDelete);
-
-        if (isDeleted) {
-            addArtwork(artItemList); // Reload the table with updated data
-            JOptionPane.showMessageDialog(this, "Item deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "ID not found.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (ValidationUtil.checkNullOrEmpty(idText)) {
+            validateArtwork(
+                    mnIDtxt, idError, "Enter ID.",
+                    redColor, greenColour, ValidationUtil.validateID(idText)
+            );
+            return;
         }
 
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Invalid ID. Please enter a valid number.", "Input Error", JOptionPane.ERROR_MESSAGE);   
-}
+        try {
+            int idToDelete = Integer.parseInt(idText);
+
+            // Use removeIf for safe removal
+            boolean isDeleted = artItemList.removeIf(item -> item.getArtId() == idToDelete);
+
+            if (isDeleted) {
+                addArtwork(artItemList); // Reload the table with updated data
+                JOptionPane.showMessageDialog(this, "Item deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                mnIDtxt.setBorder(createBorder(redColor));
+                JOptionPane.showMessageDialog(this, "ID not found.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+
+            showDialogBox("Invalid ID. Please enter a valid number.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_mnDeleteButtonActionPerformed
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
@@ -1418,64 +1478,55 @@ public class AGM extends javax.swing.JFrame {
     private void mnSearchtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSearchtxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mnSearchtxtActionPerformed
-    
-    private void updateTable(List<paintingInfo> sortedList) {
-    DefaultTableModel model = (DefaultTableModel) mntable.getModel();
-    model.setRowCount(0); // Clear the table
-    for (paintingInfo art : sortedList) {
-        model.addRow(new Object[]{art.getArtId(), art.getName(), art.getDate(), art.getMedium(), art.getContact(), art.getPrice(),art.getAddress(),   art.getFormatt()
-           ,art.getSize()});
-    }
-    }
-    
+
     //this is a helper method
     private void registerArtworkFromTable() {
-    artItemList.clear(); // Clear the list to avoid duplicates
-    DefaultTableModel model = (DefaultTableModel) mntable.getModel();
+        artItemList.clear(); // Clear the list to avoid duplicates
+        DefaultTableModel model = (DefaultTableModel) mntable.getModel();
 
-    // Reconstruct artItemList from the table
-    for (int i = 0; i < model.getRowCount(); i++) {
-        paintingInfo art = new paintingInfo(
-            (int) model.getValueAt(i, 0), // ID
-            (String) model.getValueAt(i, 1), // Name
-            (String) model.getValueAt(i, 2), // Date
-            (String) model.getValueAt(i, 3), // Medium
-            (String) model.getValueAt(i, 4), // Contact
-            (int) model.getValueAt(i, 5), // Price
-            (String) model.getValueAt(i, 6), // Address
-            (String) model.getValueAt(i, 7), // Format
-            (String) model.getValueAt(i, 8) // Size
-        );
-        artItemList.add(art);
+        // Reconstruct artItemList from the table
+        for (int i = 0; i < model.getRowCount(); i++) {
+            GalleryModel art = new GalleryModel(
+                    (int) model.getValueAt(i, 0), // ID
+                    (String) model.getValueAt(i, 1), // Name
+                    (String) model.getValueAt(i, 2), // Date
+                    (String) model.getValueAt(i, 3), // Medium
+                    (String) model.getValueAt(i, 4), // Contact
+                    (int) model.getValueAt(i, 5), // Price
+                    (String) model.getValueAt(i, 6), // Address
+                    (String) model.getValueAt(i, 7), // Format
+                    (String) model.getValueAt(i, 8) // Size
+            );
+            artItemList.add(art);
+        }
     }
-}
 
-    
+
     private void mnSortButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSortButtonActionPerformed
-        registerArtworkFromTable(); 
-        String order = mnADComboBox.getSelectedItem().toString(); // Get sort order
-    String selectedCriteria = mnSortButton.getSelectedItem().toString(); // Get field to sort by
-    List<paintingInfo> sortedList;
+        registerArtworkFromTable();
+        String order = mnADComboBox.getSelectedItem().toString(); // Get SelectionSort order
+        String selectedCriteria = mnSortButton.getSelectedItem().toString(); // Get field to SelectionSort by
+        List<GalleryModel> sortedList;
 
-    boolean isDesc = order.equals("highest to lowest");
-    System.out.println("Order: " + order + ", Is Descending: " + isDesc + ", Selected Criteria: " + selectedCriteria);
+        boolean isDesc = order.equals("highest to lowest");
+        System.out.println("Order: " + order + ", Is Descending: " + isDesc + ", Selected Criteria: " + selectedCriteria);
 
-    switch (selectedCriteria) {
-        case "Name":
-            sortedList = new insertionSort().sortByname(artItemList, isDesc);
-            break;
-        case "ID":
-            sortedList = new sort().sortById(artItemList, isDesc);
-            break;
-        case "Price":
-            sortedList = new mergeSort().mergeSortByPrice(artItemList, isDesc);
-            break;
-        default:
-            System.out.println("Invalid Criteria: " + selectedCriteria);
-            return;
-    }
+        switch (selectedCriteria) {
+            case "Name":
+                sortedList = new InsertionSort().sortByname(artItemList, isDesc);
+                break;
+            case "ID":
+                sortedList = new SelectionSort().sortById(artItemList, isDesc);
+                break;
+            case "Price":
+                sortedList = new MergeSort().mergeSortByPrice(artItemList, isDesc);
+                break;
+            default:
+                System.out.println("Invalid Criteria: " + selectedCriteria);
+                return;
+        }
 
-    updateTable(sortedList); // Update the UI with the sorted data
+        addArtwork(sortedList); // Update the UI with the sorted data
     }//GEN-LAST:event_mnSortButtonActionPerformed
 
 
@@ -1485,59 +1536,60 @@ public class AGM extends javax.swing.JFrame {
 
     private void mnSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnSearchButtonActionPerformed
         // TODO add your handling code here:
-     sort selectionSort = new sort();
-    List<paintingInfo> sortedList = selectionSort.sortByName(artItemList, false); // Ascending order
-    binarySearch search = new binarySearch();
-    paintingInfo searchedData = search.searchByName(mnSearchtxt.getText().trim(), sortedList, 0, sortedList.size() - 1);
+        List<GalleryModel> sortedList = insertionSort.sortByname(artItemList, false); // Ascending order
+        BinarySearch search = new BinarySearch();
+        GalleryModel searchedData = search.searchName(mnSearchtxt.getText().trim(), sortedList, 0, sortedList.size() - 1);
 
-    if (searchedData != null) {
-        DefaultTableModel model = (DefaultTableModel) mntable.getModel();
-        model.setRowCount(0); // Clear the table
+        if (searchedData != null) {
+            DefaultTableModel model = (DefaultTableModel) mntable.getModel();
+            model.setRowCount(0); // Clear the table
 
-        // Add the searched item as the first row
-        model.addRow(new Object[]{
-            searchedData.getArtId(), searchedData.getName(), searchedData.getDate(), searchedData.getMedium(),
-            searchedData.getContact(), searchedData.getPrice(), searchedData.getAddress(), searchedData.getFormatt(),
-            searchedData.getSize()
-                
-        });
+            // Add the searched item as the first row
+            model.addRow(new Object[]{
+                searchedData.getArtId(), searchedData.getName(), searchedData.getDate(), searchedData.getMedium(),
+                searchedData.getContact(), searchedData.getPrice(), searchedData.getAddress(), searchedData.getFormatt(),
+                searchedData.getSize()
 
-        // Add the rest of the sorted items except the searched one
-        for (paintingInfo item : sortedList) {
-            if (!item.equals(searchedData)) {
-                model.addRow(new Object[]{
-                    item.getArtId(), item.getName(), item.getDate(), item.getMedium(),
-                    item.getContact(), item.getPrice(), item.getAddress(), item.getFormatt(),
-                    item.getSize()
-                });
+            });
+
+            // Add the rest of the sorted items except the searched one
+            for (GalleryModel item : sortedList) {
+                if (!item.equals(searchedData)) {
+                    model.addRow(new Object[]{
+                        item.getArtId(), item.getName(), item.getDate(), item.getMedium(),
+                        item.getContact(), item.getPrice(), item.getAddress(), item.getFormatt(),
+                        item.getSize()
+                    });
+                }
             }
+
+            // Highlight the searched item in the table
+            mntable.setRowSelectionInterval(0, 0); // Select the first row
+            mntable.scrollRectToVisible(mntable.getCellRect(0, 0, true)); // Ensure the row is visible
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid name.", "Name does not exist", JOptionPane.ERROR_MESSAGE);
         }
-
-        // Highlight the searched item in the table
-        mntable.setRowSelectionInterval(0, 0); // Select the first row
-        mntable.scrollRectToVisible(mntable.getCellRect(0, 0, true)); // Ensure the row is visible
-
-    } else {
-        JOptionPane.showMessageDialog(this, "Invalid name.", "Name does not exist", JOptionPane.ERROR_MESSAGE);
-    }
     }//GEN-LAST:event_mnSearchButtonActionPerformed
-    
+
+    private void mnLogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnLogoutBtnActionPerformed
+        // TODO add your handling code here:
+        loadScreen("LoginScreen");
+
+    }//GEN-LAST:event_mnLogoutBtnActionPerformed
+
     private void resetFormFields() {
-    // Reset the form fields after successful update
-    mnNametxt.setText("");
-    mnIDtxt.setText("");
-    mnDatetxt.setText("");
-    mnContacttxt.setText("");
-    mnPricetxt.setText("");
-    mnStudioAddresstxt.setText("");
-    mnSizetxt.setText("");
-    mnMeduimtxt.setSelectedIndex(0);
-    mnFormattxt.setSelectedIndex(0);
-}
-
-
-
-
+        // Reset the form fields after successful update
+        mnNametxt.setText("");
+        mnIDtxt.setText("");
+        mnDatetxt.setText("");
+        mnContacttxt.setText("");
+        mnPricetxt.setText("");
+        mnStudioAddresstxt.setText("");
+        mnSizetxt.setText("");
+        mnMeduimtxt.setSelectedIndex(0);
+        mnFormattxt.setSelectedIndex(0);
+    }
 
     /**
      * @param args the command line arguments
@@ -1556,20 +1608,21 @@ public class AGM extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AGM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GalleryMangement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AGM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GalleryMangement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AGM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GalleryMangement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AGM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GalleryMangement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AGM().setVisible(true);
+                new GalleryMangement().setVisible(true);
             }
         });
     }
@@ -1585,15 +1638,11 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
@@ -1601,9 +1650,6 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
@@ -1638,7 +1684,6 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
@@ -1646,7 +1691,6 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lgImg;
     private javax.swing.JLabel lgPasswordError;
     private javax.swing.JLabel lgUsernamError;
@@ -1665,14 +1709,23 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JPanel mnFeatured;
     private javax.swing.JComboBox<String> mnFormattxt;
     private javax.swing.JPanel mnGallery;
+    private javax.swing.JLabel mnHAbstractArtImg;
+    private javax.swing.JLabel mnHAbstractArtLbl;
     private javax.swing.JPanel mnHDescriptionPanel;
+    private javax.swing.JLabel mnHModernArtImg;
+    private javax.swing.JLabel mnHModernArtLbl;
     private javax.swing.JLabel mnHTitle1;
     private javax.swing.JLabel mnHTitle2;
+    private javax.swing.JLabel mnHTraditionalImg;
+    private javax.swing.JLabel mnHTraditionalLbl;
+    private javax.swing.JLabel mnHmainImg;
     private javax.swing.JPanel mnHome;
+    private javax.swing.JPanel mnHomePanelScroll;
     private javax.swing.JTextField mnIDtxt;
     private javax.swing.JLabel mnLineimg1;
     private javax.swing.JLabel mnLineimg2;
     private javax.swing.JLabel mnLineimg3;
+    private javax.swing.JButton mnLogoutBtn;
     private javax.swing.JComboBox<String> mnMeduimtxt;
     private javax.swing.JTextField mnNametxt;
     private javax.swing.JPanel mnPanel;
@@ -1682,6 +1735,7 @@ public class AGM extends javax.swing.JFrame {
     private javax.swing.JTextField mnSizetxt;
     private javax.swing.JComboBox<String> mnSortButton;
     private javax.swing.JTextField mnStudioAddresstxt;
+    private javax.swing.JTabbedPane mnTabPane;
     private javax.swing.JButton mnUpdateButton;
     private javax.swing.JScrollPane mnmainTableScroll;
     private javax.swing.JTable mntable;

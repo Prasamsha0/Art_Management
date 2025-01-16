@@ -3,15 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.agm.controller.algorithms;
-import com.agm.model.paintingInfo;
+import com.agm.model.GalleryModel;
 import java.util.List;
 
 /**
  *
- * @author Dell
+ * @author Prasamsha Singh
  */
-public class binarySearch {
-    public paintingInfo searchByName(String searchValue, List<paintingInfo> studentList, int left, int right) {
+public class BinarySearch {
+    public GalleryModel searchName(String searchValue, List<GalleryModel> artItemList, int left, int right) {
     if (right < left) {
         return null;
     }
@@ -19,15 +19,15 @@ public class binarySearch {
     int mid = (left + right) / 2;
 
     // Convert to lowercase for case-insensitive comparison
-    String midName = studentList.get(mid).getName().toLowerCase();
+    String midName = artItemList.get(mid).getName().toLowerCase();
     String searchKey = searchValue.toLowerCase();
 
     if (midName.equals(searchKey)) {
-        return studentList.get(mid);
+        return artItemList.get(mid);
     } else if (searchKey.compareTo(midName) < 0) {
-        return searchByName(searchValue, studentList, left, mid - 1);
+        return searchName(searchValue, artItemList, left, mid - 1);
     } else {
-        return searchByName(searchValue, studentList, mid + 1, right);
+        return searchName(searchValue, artItemList, mid + 1, right);
     }
 }
 

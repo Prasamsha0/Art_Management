@@ -4,27 +4,27 @@
  */
 package com.agm.controller.algorithms;
 import java.util.List;
-import com.agm.model.paintingInfo;
+import com.agm.model.GalleryModel;
 import java.util.ArrayList;
 /**
  *
  * @author Prasamsha Singh
  */
-    public class insertionSort {
-     List<paintingInfo> artItemList;
+    public class InsertionSort {
+     List<GalleryModel> artItemList;
      
-     public insertionSort(){
+     public InsertionSort(){
         artItemList = new ArrayList<>();
     }
     /**
-     * Sorts the list of paintingInfo objects by name using Insertion Sort algorithm.
+     * Sorts the list of GalleryModel objects by name using Insertion Sort algorithm.
      * 
      * 
      * @param itemsList
      * @param isDesc specifies whether to sort in descending (true) or ascending (false)
-     * @return the sorted list of paintingInfo objects
+     * @return the sorted list of GalleryModel objects
      */
-    public List<paintingInfo> sortByName(List<paintingInfo> itemsList, boolean isDesc) {
+    public List<GalleryModel> sortByName(List<GalleryModel> itemsList, boolean isDesc) {
         // Loop through the list starting from the second element (index 1)
         this.artItemList.clear();
         this.artItemList.addAll(itemsList);
@@ -32,7 +32,7 @@ import java.util.ArrayList;
             throw new IllegalArgumentException("The list cannot be null or empty.");
         }
         for (int i = 1; i < artItemList.size(); i++) {
-            paintingInfo current = artItemList.get(i); // The current element to be inserted
+            GalleryModel current = artItemList.get(i); // The current element to be inserted
             int j = i - 1;
 
             // Compare and shift the elements of the sorted portion of the list
@@ -49,14 +49,14 @@ import java.util.ArrayList;
         return artItemList; // Return the sorted list
     }
     
-public List<paintingInfo> sortByname(List<paintingInfo> unsortedData, boolean isDesc) {
+public List<GalleryModel> sortByname(List<GalleryModel> unsortedData, boolean isDesc) {
     // Create a copy of the data to sort
-    List<paintingInfo> dataToSort = new ArrayList<>();
+    List<GalleryModel> dataToSort = new ArrayList<>();
     dataToSort.addAll(unsortedData);
 
     for (int i = 1; i < dataToSort.size(); i++) {
         // Extract the current element
-        paintingInfo current = dataToSort.get(i);
+        GalleryModel current = dataToSort.get(i);
         int j = i - 1;
 
         // Move elements of the sorted portion to make space for the current element
@@ -81,8 +81,8 @@ public List<paintingInfo> sortByname(List<paintingInfo> unsortedData, boolean is
     /**
      * Compares two names to determine if they should be swapped based on the order (ascending or descending).
      * 
-     * @param current the name of the current paintingInfo object
-     * @param extremum the name of the paintingInfo object to compare with
+     * @param current the name of the current GalleryModel object
+     * @param extremum the name of the GalleryModel object to compare with
      * @param isDesc specifies whether to sort in descending order (true) or ascending order (false)
      * @return true if the current name should be swapped with the extremum name, false otherwise
      */
