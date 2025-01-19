@@ -280,14 +280,17 @@ public class GalleryMangement extends javax.swing.JFrame {
         loginPanel.add(jLabel27);
         jLabel27.setBounds(870, 270, 250, 32);
 
-        mnPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mnPanel.setBackground(new java.awt.Color(255, 255, 204));
         mnPanel.setMaximumSize(new java.awt.Dimension(1200, 700));
         mnPanel.setMinimumSize(new java.awt.Dimension(1200, 700));
         mnPanel.setPreferredSize(new java.awt.Dimension(1200, 700));
         mnPanel.setLayout(null);
 
-        mnTabPane.setBackground(new java.awt.Color(255, 255, 255));
+        mnTabPane.setBackground(new java.awt.Color(0, 102, 102));
+        mnTabPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        mnTabPane.setForeground(new java.awt.Color(255, 255, 255));
         mnTabPane.setDoubleBuffered(true);
+        mnTabPane.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         mnTabPane.setMaximumSize(new java.awt.Dimension(1000, 600));
         mnTabPane.setMinimumSize(new java.awt.Dimension(1000, 600));
         mnTabPane.setPreferredSize(new java.awt.Dimension(1000, 600));
@@ -374,6 +377,8 @@ public class GalleryMangement extends javax.swing.JFrame {
         mnHomePanelScroll.add(mnHDescriptionPanel);
         mnHDescriptionPanel.setBounds(530, 0, 670, 450);
 
+        mnLogoutBtn.setBackground(new java.awt.Color(255, 153, 0));
+        mnLogoutBtn.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         mnLogoutBtn.setText("Back to Login");
         mnLogoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,7 +386,7 @@ public class GalleryMangement extends javax.swing.JFrame {
             }
         });
         mnHomePanelScroll.add(mnLogoutBtn);
-        mnLogoutBtn.setBounds(980, 800, 140, 23);
+        mnLogoutBtn.setBounds(950, 800, 140, 23);
 
         jScrollPane3.setViewportView(mnHomePanelScroll);
 
@@ -978,11 +983,11 @@ public class GalleryMangement extends javax.swing.JFrame {
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/img 1.jpg"))); // NOI18N
         jLabel11.setText("jLabel11");
         mnFeatured.add(jLabel11);
-        jLabel11.setBounds(580, 380, 610, 350);
+        jLabel11.setBounds(600, 380, 610, 350);
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/img 2.jpg"))); // NOI18N
         mnFeatured.add(jLabel14);
-        jLabel14.setBounds(620, -10, 560, 300);
+        jLabel14.setBounds(620, -10, 620, 320);
 
         mnTabPane.addTab("featured", mnFeatured);
 
@@ -1138,7 +1143,7 @@ public class GalleryMangement extends javax.swing.JFrame {
         else if (password.isEmpty()) {
             lgPasswordError.setText("Please enter your password.");
         } //incase  username and password are incorrect
-        else if (!username.equals("p")) {
+        else if (!username.equals("Prasamsha")) {
             lgUsernamError.setText("Username incorrect");
         } //check if password is incorrect
         else if (!password.equals("z")) {
@@ -1509,7 +1514,6 @@ public class GalleryMangement extends javax.swing.JFrame {
         List<GalleryModel> sortedList;
 
         boolean isDesc = order.equals("highest to lowest");
-        System.out.println("Order: " + order + ", Is Descending: " + isDesc + ", Selected Criteria: " + selectedCriteria);
 
         switch (selectedCriteria) {
             case "Name":
@@ -1538,7 +1542,7 @@ public class GalleryMangement extends javax.swing.JFrame {
         // TODO add your handling code here:
         List<GalleryModel> sortedList = insertionSort.sortByname(artItemList, false); // Ascending order
         BinarySearch search = new BinarySearch();
-        GalleryModel searchedData = search.searchName(mnSearchtxt.getText().trim(), sortedList, 0, sortedList.size() - 1);
+        GalleryModel searchedData = search.searchByName(mnSearchtxt.getText().trim(), sortedList, 0, sortedList.size() - 1);
 
         if (searchedData != null) {
             DefaultTableModel model = (DefaultTableModel) mntable.getModel();

@@ -13,36 +13,75 @@ import java.util.List;
  * 
  */
 public class MergeSort {
-    public List<GalleryModel> mergeSortByPrice(List<GalleryModel> list, boolean isDesc) {
-        if (list.size() <= 1) {
-            return list;
+    /**
+     * Sorts a list of GalleryModel objects by their price using Merge Sort.
+     * @param artItemList the list of GalleryModel objects
+     * @param isDesc true for descending order otherwise false 
+     * @return merge(left, right, isDesc)
+     */
+    public List<GalleryModel> mergeSortByPrice(List<GalleryModel> artItemList, boolean isDesc) {
+        // Base case: if the list size is 1 or less, it is already sorted.
+        if (artItemList.size() <= 1) {
+            return artItemList;
         }
 
-        int mid = list.size() / 2;
-        List<GalleryModel> left = mergeSortByPrice(list.subList(0, mid), isDesc);
-        List<GalleryModel> right = mergeSortByPrice(list.subList(mid, list.size()), isDesc);
+        // Splitting the list into two parts
+        int mid = artItemList.size() / 2;
+        List<GalleryModel> left = new ArrayList<>();
+        List<GalleryModel> right = new ArrayList<>();
 
+        // Add elements to the left half
+        for (int i = 0; i < mid; i++) {
+            left.add(artItemList.get(i));
+        }
+
+        // Add elements to the right half
+        for (int i = mid; i < artItemList.size(); i++) {
+            right.add(artItemList.get(i));
+        }
+
+        // sort left and right
+        left = mergeSortByPrice(left, isDesc);
+        right = mergeSortByPrice(right, isDesc);
+
+        // Merge the two sorted left and right
         return merge(left, right, isDesc);
     }
 
+    /**
+     * Merges two sorted lists of GalleryModel objects into a single sorted list.
+     *
+     * @param left the first sorted list
+     * @param right the second sorted list
+     * @param isDesc true for descending order, false for ascending
+     * @return the merged sorted list
+     */
     private List<GalleryModel> merge(List<GalleryModel> left, List<GalleryModel> right, boolean isDesc) {
-        List<GalleryModel> result = new ArrayList<>();
-        int i = 0, j = 0;
+        List<GalleryModel> mergedList = new ArrayList<>();
+        int leftIndex = 0, rightIndex = 0;
 
-        while (i < left.size() && j < right.size()) {
+        // Merge elements from both lists in the desired order
+        while (leftIndex < left.size() && rightIndex < right.size()) {
             if (isDesc
-                    ? left.get(i).getPrice() > right.get(j).getPrice()
-                    : left.get(i).getPrice() < right.get(j).getPrice()) {
-                result.add(left.get(i++));
+                    ? left.get(leftIndex).getPrice() >= right.get(rightIndex).getPrice()
+                    : left.get(leftIndex).getPrice() <= right.get(rightIndex).getPrice()) {
+                mergedList.add(left.get(leftIndex++));
             } else {
-                result.add(right.get(j++));
+                mergedList.add(right.get(rightIndex++));
             }
         }
 
-        result.addAll(left.subList(i, left.size()));
-        result.addAll(right.subList(j, right.size()));
+        // Add any remaining elements from the left list
+        while (leftIndex < left.size()) {
+            mergedList.add(left.get(leftIndex++));
+        }
 
-        return result;
+        // Add any remaining elements from the right list
+        while (rightIndex < right.size()) {
+            mergedList.add(right.get(rightIndex++));
+        }
+
+        return mergedList;
     }
 }
 

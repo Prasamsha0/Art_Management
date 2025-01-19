@@ -24,6 +24,12 @@ public class SelectionSort {
         artItemList = new ArrayList<>();
     }
     
+    /**
+     * Main method to perform selection sort
+     * @param isDesc the Boolean Vaule 
+     * @param itemsList the list of GalleryModel objects
+     * @return artItemList
+     */
     public List<GalleryModel> sortById(List<GalleryModel> itemsList, boolean isDesc) {
         this.artItemList.clear();
         this.artItemList.addAll(itemsList);
@@ -40,6 +46,13 @@ public class SelectionSort {
         return artItemList;
     }
     
+    /**
+     * 
+     * @param current
+     * @param extremum
+     * @param isDesc
+     * @return true or false
+     */
     private boolean shouldSwap(int current, int extremum, boolean isDesc) {
         return isDesc ? current > extremum : current < extremum;
     }
@@ -52,7 +65,7 @@ public class SelectionSort {
      * @param startIndex the index to start searching from
      * @param isDesc specifies whether to find the maximum (true) or minimum
      * (false)
-     * @return the index of the extremum value
+     * @return the index of the extremum
      */
     private int findExtremumIndex(List<GalleryModel> artSortList, int startIndex, boolean isDesc) {
         int extremumIndex = startIndex;
