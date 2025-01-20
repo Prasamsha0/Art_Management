@@ -33,11 +33,11 @@ public class GalleryMangement extends javax.swing.JFrame {
     private final Color redColor = new Color(255, 51, 0);
     private final Color greenColour = new Color(35, 101, 51);
     private final SelectionSort selectionSort; //declare selectionSort as a variable from the SelectionSort class
-    private final InsertionSort insertionSort;//declare ielectionSort as a variable from the InserttionSort class
-    private final MergeSort MergeSort;
+    private final InsertionSort insertionSort;//declare insertionSort as a variable from the InserttionSort class
+    private final MergeSort MergeSort;//declare mergeSort as a variable from the MergeSort class
 
     /**
-     * constructer of the GalleryMangement frame initializes components setting
+     * constructor of the GalleryMangement frame that initializes components setting
      * up necessary variables.
      */
     public GalleryMangement() {
@@ -57,10 +57,11 @@ public class GalleryMangement extends javax.swing.JFrame {
         // entering new artwork detailk
         addInitialArtwork(new GalleryModel(2234, "Zenep Mali", "23/02/2024", "Watercolor", "9841489349", 53000, "Narnia Studio", "Paper", "100 X 100"));
         addInitialArtwork(new GalleryModel(3455, "Aliza Singh", "24/09/2004", "Acrylic", "9860997123", 12903, "Mantra Studio", "Cloth", "1000 X 600"));
-        addInitialArtwork(new GalleryModel(1095, "Rio Cantos", "12/05/2021", "Oil", "9860997123", 3456453, "Narsim Studio", "Glass", "1000 X 600"));
-        addInitialArtwork(new GalleryModel(1008, "Lia Bhatta", "4/11/2013", "Acrylic", "9860997123", 100004, "Arctic Studio", "Cloth", "1000 X 600"));
-        addInitialArtwork(new GalleryModel(2367, "Ria Lama", "30/03/2018", "Charcoal", "9860997123", 45673, "Himaliya Studio", "Glass", "1000 X 600"));
-        addInitialArtwork(new GalleryModel(3984, "Binu Adhikari", "7/12/2020", "Acrylic", "9860997123", 325433, "Ktm Art Studio", "Cloth", "1000 X 600"));
+        addInitialArtwork(new GalleryModel(1095, "Rio Cantos", "12/05/2021", "Oil", "9860997123", 3456453, "Narsim Studio", "Glass", "1030 X 600"));
+        addInitialArtwork(new GalleryModel(1008, "Lia Bhatta", "4/11/2013", "Acrylic", "9860997123", 100004, "Arctic Studio", "Cloth", "689 X 900"));
+        addInitialArtwork(new GalleryModel(2367, "Ria Lama", "30/03/2018", "Charcoal", "9860997123", 45673, "Himaliya Studio", "Glass", "2000 X 400"));
+        addInitialArtwork(new GalleryModel(3984, "Binu Adhikari", "7/12/2020", "Acrylic", "9860997123", 325433, "Ktm Art Studio", "Cloth", "700 X 400"));
+        addInitialArtwork(new GalleryModel(3980, "Bina Adhikari", "7/11/2020", "Oil", "98609237123", 100000, " Art Studio", "Cloth", "16000 X 34600"));
     }
 
     /**
@@ -88,17 +89,17 @@ public class GalleryMangement extends javax.swing.JFrame {
     private void initComponents() {
 
         loginPanel = new javax.swing.JPanel();
-        jLabel57 = new javax.swing.JLabel();
-        jLabel58 = new javax.swing.JLabel();
+        lgPasswordlbl = new javax.swing.JLabel();
+        lgUsernamelbl = new javax.swing.JLabel();
         lgusernametxt = new javax.swing.JTextField();
         lgUsernamError = new javax.swing.JLabel();
         lgPasswordError = new javax.swing.JLabel();
         lgpasswordtxt = new javax.swing.JPasswordField();
         lgbutton = new javax.swing.JButton();
         lgImg = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        lgPersonImg = new javax.swing.JLabel();
+        lgCircle = new javax.swing.JLabel();
+        lgWelcome = new javax.swing.JLabel();
         mnPanel = new javax.swing.JPanel();
         mnTabPane = new javax.swing.JTabbedPane();
         mnHome = new javax.swing.JPanel();
@@ -121,7 +122,7 @@ public class GalleryMangement extends javax.swing.JFrame {
         mnLogoutBtn = new javax.swing.JButton();
         mnGallery = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel5 = new javax.swing.JPanel();
+        mnGalleryScrollPnl = new javax.swing.JPanel();
         mnmainTableScroll = new javax.swing.JScrollPane();
         mntable = new javax.swing.JTable();
         mnSortButton = new javax.swing.JComboBox<>();
@@ -129,17 +130,17 @@ public class GalleryMangement extends javax.swing.JFrame {
         mnADComboBox = new javax.swing.JComboBox<>();
         mnSearchButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel39 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
@@ -152,7 +153,7 @@ public class GalleryMangement extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        mnGalleryLine = new javax.swing.JSeparator();
         jLabel22 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
         jLabel55 = new javax.swing.JLabel();
@@ -210,18 +211,19 @@ public class GalleryMangement extends javax.swing.JFrame {
         loginPanel.setPreferredSize(new java.awt.Dimension(1200, 700));
         loginPanel.setLayout(null);
 
-        jLabel57.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel57.setText("password");
-        loginPanel.add(jLabel57);
-        jLabel57.setBounds(870, 410, 110, 16);
+        lgPasswordlbl.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lgPasswordlbl.setText("password");
+        loginPanel.add(lgPasswordlbl);
+        lgPasswordlbl.setBounds(870, 410, 110, 16);
 
-        jLabel58.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel58.setText("username");
-        loginPanel.add(jLabel58);
-        jLabel58.setBounds(870, 320, 80, 16);
+        lgUsernamelbl.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        lgUsernamelbl.setText("username");
+        loginPanel.add(lgUsernamelbl);
+        lgUsernamelbl.setBounds(870, 320, 80, 16);
 
         lgusernametxt.setBackground(java.awt.SystemColor.controlHighlight);
-        lgusernametxt.setText("p");
+        lgusernametxt.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lgusernametxt.setText("Prasamsha");
         lgusernametxt.setBorder(null);
         lgusernametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,6 +238,7 @@ public class GalleryMangement extends javax.swing.JFrame {
         lgPasswordError.setBounds(870, 470, 240, 20);
 
         lgpasswordtxt.setBackground(java.awt.SystemColor.controlHighlight);
+        lgpasswordtxt.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lgpasswordtxt.setText("z");
         lgpasswordtxt.setBorder(null);
         lgpasswordtxt.addActionListener(new java.awt.event.ActionListener() {
@@ -266,19 +269,19 @@ public class GalleryMangement extends javax.swing.JFrame {
         loginPanel.add(lgImg);
         lgImg.setBounds(0, -10, 800, 720);
 
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/person_13924070 1.png"))); // NOI18N
-        loginPanel.add(jLabel26);
-        jLabel26.setBounds(930, 140, 70, 56);
+        lgPersonImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/person_13924070 1.png"))); // NOI18N
+        loginPanel.add(lgPersonImg);
+        lgPersonImg.setBounds(930, 140, 70, 56);
 
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Ellipse 1.png"))); // NOI18N
-        loginPanel.add(jLabel25);
-        jLabel25.setBounds(910, 120, 130, 110);
+        lgCircle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Ellipse 1.png"))); // NOI18N
+        loginPanel.add(lgCircle);
+        lgCircle.setBounds(910, 120, 130, 110);
 
-        jLabel27.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel27.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        jLabel27.setText("Welcome, Prasamsha");
-        loginPanel.add(jLabel27);
-        jLabel27.setBounds(870, 270, 250, 32);
+        lgWelcome.setBackground(new java.awt.Color(255, 255, 255));
+        lgWelcome.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        lgWelcome.setText("Welcome, Prasamsha");
+        loginPanel.add(lgWelcome);
+        lgWelcome.setBounds(870, 270, 250, 32);
 
         mnPanel.setBackground(new java.awt.Color(255, 255, 204));
         mnPanel.setMaximumSize(new java.awt.Dimension(1200, 700));
@@ -408,11 +411,11 @@ public class GalleryMangement extends javax.swing.JFrame {
         jScrollPane1.setMinimumSize(new java.awt.Dimension(1200, 700));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1200, 700));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setMaximumSize(new java.awt.Dimension(1200, 1600));
-        jPanel5.setMinimumSize(new java.awt.Dimension(1200, 1600));
-        jPanel5.setPreferredSize(new java.awt.Dimension(1200, 1600));
-        jPanel5.setLayout(null);
+        mnGalleryScrollPnl.setBackground(new java.awt.Color(255, 255, 255));
+        mnGalleryScrollPnl.setMaximumSize(new java.awt.Dimension(1200, 1600));
+        mnGalleryScrollPnl.setMinimumSize(new java.awt.Dimension(1200, 1600));
+        mnGalleryScrollPnl.setPreferredSize(new java.awt.Dimension(1200, 1600));
+        mnGalleryScrollPnl.setLayout(null);
 
         mntable.setBackground(new java.awt.Color(81, 82, 103));
         mntable.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
@@ -435,17 +438,19 @@ public class GalleryMangement extends javax.swing.JFrame {
         });
         mnmainTableScroll.setViewportView(mntable);
 
-        jPanel5.add(mnmainTableScroll);
+        mnGalleryScrollPnl.add(mnmainTableScroll);
         mnmainTableScroll.setBounds(10, 110, 1160, 140);
 
-        mnSortButton.setBackground(new java.awt.Color(165, 135, 99));
+        mnSortButton.setBackground(new java.awt.Color(0, 102, 102));
+        mnSortButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        mnSortButton.setForeground(new java.awt.Color(255, 255, 255));
         mnSortButton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "ID", "Price" }));
         mnSortButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnSortButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(mnSortButton);
+        mnGalleryScrollPnl.add(mnSortButton);
         mnSortButton.setBounds(1070, 60, 110, 30);
 
         mnSearchtxt.addActionListener(new java.awt.event.ActionListener() {
@@ -453,39 +458,37 @@ public class GalleryMangement extends javax.swing.JFrame {
                 mnSearchtxtActionPerformed(evt);
             }
         });
-        jPanel5.add(mnSearchtxt);
+        mnGalleryScrollPnl.add(mnSearchtxt);
         mnSearchtxt.setBounds(590, 60, 160, 30);
 
-        mnADComboBox.setBackground(new java.awt.Color(255, 153, 51));
-        mnADComboBox.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        mnADComboBox.setBackground(new java.awt.Color(0, 102, 102));
+        mnADComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        mnADComboBox.setForeground(new java.awt.Color(255, 255, 255));
         mnADComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "lowest to higest", "highest to lowest" }));
         mnADComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnADComboBoxActionPerformed(evt);
             }
         });
-        jPanel5.add(mnADComboBox);
-        mnADComboBox.setBounds(850, 60, 127, 30);
+        mnGalleryScrollPnl.add(mnADComboBox);
+        mnADComboBox.setBounds(850, 60, 134, 30);
 
-        mnSearchButton.setBackground(new java.awt.Color(165, 135, 99));
-        mnSearchButton.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        mnSearchButton.setBackground(new java.awt.Color(0, 102, 102));
+        mnSearchButton.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        mnSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         mnSearchButton.setText("search");
         mnSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnSearchButtonActionPerformed(evt);
             }
         });
-        jPanel5.add(mnSearchButton);
+        mnGalleryScrollPnl.add(mnSearchButton);
         mnSearchButton.setBounds(470, 60, 110, 30);
 
         jPanel6.setBackground(new java.awt.Color(233, 224, 209));
         jPanel6.setMinimumSize(new java.awt.Dimension(374, 552));
         jPanel6.setPreferredSize(new java.awt.Dimension(374, 552));
         jPanel6.setLayout(null);
-
-        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Pagoda 2.png"))); // NOI18N
-        jPanel6.add(jLabel44);
-        jLabel44.setBounds(30, 10, 280, 390);
 
         jLabel45.setFont(new java.awt.Font("Sitka Banner", 0, 36)); // NOI18N
         jLabel45.setText("Patan Valley");
@@ -497,7 +500,11 @@ public class GalleryMangement extends javax.swing.JFrame {
         jPanel6.add(jLabel36);
         jLabel36.setBounds(150, 460, 79, 45);
 
-        jPanel5.add(jPanel6);
+        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Pagoda 2.png"))); // NOI18N
+        jPanel6.add(jLabel44);
+        jLabel44.setBounds(40, 20, 280, 390);
+
+        mnGalleryScrollPnl.add(jPanel6);
         jPanel6.setBounds(20, 390, 360, 570);
 
         jPanel8.setBackground(new java.awt.Color(233, 224, 209));
@@ -529,7 +536,7 @@ public class GalleryMangement extends javax.swing.JFrame {
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(157, 157, 157)
                         .addComponent(jLabel50)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -543,30 +550,48 @@ public class GalleryMangement extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel8);
+        mnGalleryScrollPnl.add(jPanel8);
         jPanel8.setBounds(810, 390, 360, 570);
 
         jPanel9.setBackground(new java.awt.Color(233, 224, 209));
         jPanel9.setMaximumSize(new java.awt.Dimension(374, 552));
         jPanel9.setMinimumSize(new java.awt.Dimension(374, 552));
         jPanel9.setPreferredSize(new java.awt.Dimension(374, 552));
-        jPanel9.setLayout(null);
-
-        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Mandalas_ART_NEPAL 1.png"))); // NOI18N
-        jPanel9.add(jLabel41);
-        jLabel41.setBounds(40, 20, 330, 380);
 
         jLabel42.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
         jLabel42.setText("1000000$");
-        jPanel9.add(jLabel42);
-        jLabel42.setBounds(180, 480, 110, 31);
 
         jLabel43.setFont(new java.awt.Font("Sitka Banner", 0, 36)); // NOI18N
         jLabel43.setText("Thanka Mandala");
-        jPanel9.add(jLabel43);
-        jLabel43.setBounds(110, 430, 260, 46);
 
-        jPanel5.add(jPanel9);
+        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/agm/resources/Mandalas_ART_NEPAL 1.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel43)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel42))
+        );
+
+        mnGalleryScrollPnl.add(jPanel9);
         jPanel9.setBounds(389, 393, 410, 570);
 
         jPanel10.setBackground(new java.awt.Color(233, 224, 209));
@@ -589,29 +614,29 @@ public class GalleryMangement extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel39))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(jLabel48))
+                        .addGap(102, 102, 102)
+                        .addComponent(jLabel49))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(jLabel49)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                        .addGap(120, 120, 120)
+                        .addComponent(jLabel48)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel49)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel48)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel10);
+        mnGalleryScrollPnl.add(jPanel10);
         jPanel10.setBounds(20, 970, 360, 560);
 
         jPanel11.setBackground(new java.awt.Color(233, 224, 209));
@@ -657,7 +682,7 @@ public class GalleryMangement extends javax.swing.JFrame {
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel11);
+        mnGalleryScrollPnl.add(jPanel11);
         jPanel11.setBounds(389, 968, 410, 560);
 
         jPanel12.setBackground(new java.awt.Color(233, 224, 209));
@@ -687,7 +712,7 @@ public class GalleryMangement extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(148, 148, 148)
                         .addComponent(jLabel53)))
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -701,34 +726,34 @@ public class GalleryMangement extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel12);
+        mnGalleryScrollPnl.add(jPanel12);
         jPanel12.setBounds(810, 970, 360, 560);
 
-        jSeparator1.setBackground(new java.awt.Color(102, 51, 0));
-        jPanel5.add(jSeparator1);
-        jSeparator1.setBounds(0, 295, 1253, 10);
+        mnGalleryLine.setBackground(new java.awt.Color(102, 51, 0));
+        mnGalleryScrollPnl.add(mnGalleryLine);
+        mnGalleryLine.setBounds(0, 295, 1253, 10);
 
         jLabel22.setFont(new java.awt.Font("Sitka Banner", 0, 24)); // NOI18N
         jLabel22.setText("Collections");
-        jPanel5.add(jLabel22);
+        mnGalleryScrollPnl.add(jLabel22);
         jLabel22.setBounds(10, 270, 120, 31);
 
         jLabel54.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel54.setText("sort by");
-        jPanel5.add(jLabel54);
+        mnGalleryScrollPnl.add(jLabel54);
         jLabel54.setBounds(1030, 70, 43, 16);
 
         jLabel55.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel55.setText("order");
-        jPanel5.add(jLabel55);
+        mnGalleryScrollPnl.add(jLabel55);
         jLabel55.setBounds(810, 70, 29, 16);
 
         jLabel56.setFont(new java.awt.Font("Sitka Banner", 0, 64)); // NOI18N
         jLabel56.setText("Add Art");
-        jPanel5.add(jLabel56);
-        jLabel56.setBounds(20, 20, 390, 70);
+        mnGalleryScrollPnl.add(jLabel56);
+        jLabel56.setBounds(20, 40, 390, 70);
 
-        jScrollPane1.setViewportView(jPanel5);
+        jScrollPane1.setViewportView(mnGalleryScrollPnl);
 
         mnGallery.add(jScrollPane1);
         jScrollPane1.setBounds(0, 0, 1200, 700);
@@ -857,7 +882,7 @@ public class GalleryMangement extends javax.swing.JFrame {
         dateError.setBounds(500, 97, 168, 20);
 
         mnDatetxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        mnDatetxt.setText("dd/mm/yyyy");
+        mnDatetxt.setText("12/12/12");
         mnDatetxt.setBorder(null);
         mnDatetxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -873,7 +898,7 @@ public class GalleryMangement extends javax.swing.JFrame {
         jLabel6.setBounds(500, 26, 100, 20);
 
         mnNametxt.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        mnNametxt.setText("afgg");
+        mnNametxt.setText("Rin Tamang");
         mnNametxt.setBorder(null);
         mnNametxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1159,17 +1184,17 @@ public class GalleryMangement extends javax.swing.JFrame {
 
     private boolean validateArtwork(JTextField txtField, JLabel errorLbl, String errorMsg, Color redColor, Color greenColor, boolean isValidFormat) {
         if (ValidationUtil.checkNullOrEmpty(txtField.getText())) {
-            txtField.setBorder(createBorder(redColor));  // Changed to use createBorder
+            txtField.setBorder(createBorder(redColor));  
             errorLbl.setText("Field cannot be empty!");
             errorLbl.setVisible(true);
             return false;
         } else if (!isValidFormat) {
-            txtField.setBorder(createBorder(redColor));  // Changed to use createBorder
+            txtField.setBorder(createBorder(redColor));  
             errorLbl.setText(errorMsg);
             errorLbl.setVisible(true);
             return false;
         } else {
-            txtField.setBorder(createBorder(greenColor));  // Changed to use createBorder
+            txtField.setBorder(createBorder(greenColor));  
             errorLbl.setVisible(false);
             return true;
         }
@@ -1243,12 +1268,12 @@ public class GalleryMangement extends javax.swing.JFrame {
 
             if (duplicateartID(items)) {
                 // Add the student if no duplicate is found
-                mnIDtxt.setBorder(createBorder(redColor));  // Changed to use createBorder
+                mnIDtxt.setBorder(createBorder(redColor)); 
                 showDialogBox("ID already exists", "ID Error", JOptionPane.ERROR_MESSAGE);
             } else {
                 artItemList.add(items);
                 addArtwork(artItemList);
-                mnIDtxt.setBorder(createBorder(greenColour));  // Changed to use createBorder
+                mnIDtxt.setBorder(createBorder(greenColour));  
                 mnNametxt.setText("");
                 mnIDtxt.setText("");
                 mnDatetxt.setText("");
@@ -1267,7 +1292,6 @@ public class GalleryMangement extends javax.swing.JFrame {
 
     /**
      * Updates the JTable mnTable with artwork details list.
-     *
      * @param itemsList the list of GalleryModel objects containing the artwork
      * details
      */
@@ -1321,21 +1345,8 @@ public class GalleryMangement extends javax.swing.JFrame {
         return false; // No matching ID found
     }
 
-    private void updateTable(List<GalleryModel> sortedList) {
-        DefaultTableModel model = (DefaultTableModel) mntable.getModel();
-        model.setRowCount(0); // Clear the table
-        for (GalleryModel art : sortedList) {
-            model.addRow(new Object[]{art.getArtId(), art.getName(), art.getDate(), art.getMedium(), art.getContact(), art.getPrice(), art.getAddress(), art.getFormatt(),
-                art.getSize()});
-        }
-    }
-
     /**
-     * Handles the "Update " button action event.
-     * Validates the input fields, updates the artwork details if the ID exists,
-     * and refreshes the table which shows the modified values. Displays 
-     * success or error messages.
-     *
+     * Handles the "Update " button action event. 
      * @param evt the ActionEvent triggered by clicking the "update" button
      */
     private void mnUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUpdateButtonActionPerformed
@@ -1441,7 +1452,13 @@ public class GalleryMangement extends javax.swing.JFrame {
 
     private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
         // TODO add your handling code here:
-        resetFormFields();
+        // Show a confirmation dialog
+        int response = JOptionPane.showConfirmDialog(this,"Are you sure you want to clear all the fields?","Confirm Clear", JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.YES_OPTION) {
+            resetFormFields();
+        } else if (response == JOptionPane.CANCEL_OPTION || response == JOptionPane.NO_OPTION) {
+
+        }
     }//GEN-LAST:event_clearActionPerformed
 
     private void mnIDtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnIDtxtActionPerformed
@@ -1650,9 +1667,6 @@ public class GalleryMangement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -1677,8 +1691,6 @@ public class GalleryMangement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1688,16 +1700,19 @@ public class GalleryMangement extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lgCircle;
     private javax.swing.JLabel lgImg;
     private javax.swing.JLabel lgPasswordError;
+    private javax.swing.JLabel lgPasswordlbl;
+    private javax.swing.JLabel lgPersonImg;
     private javax.swing.JLabel lgUsernamError;
+    private javax.swing.JLabel lgUsernamelbl;
+    private javax.swing.JLabel lgWelcome;
     private javax.swing.JButton lgbutton;
     private javax.swing.JPasswordField lgpasswordtxt;
     private javax.swing.JTextField lgusernametxt;
@@ -1713,6 +1728,8 @@ public class GalleryMangement extends javax.swing.JFrame {
     private javax.swing.JPanel mnFeatured;
     private javax.swing.JComboBox<String> mnFormattxt;
     private javax.swing.JPanel mnGallery;
+    private javax.swing.JSeparator mnGalleryLine;
+    private javax.swing.JPanel mnGalleryScrollPnl;
     private javax.swing.JLabel mnHAbstractArtImg;
     private javax.swing.JLabel mnHAbstractArtLbl;
     private javax.swing.JPanel mnHDescriptionPanel;
